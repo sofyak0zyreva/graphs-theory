@@ -42,7 +42,11 @@ int main(int argc, char **argv)
 	LAGraph_Cached_AT(G, msg);
 
 	// algo params
-	GrB_Vector level = NULL;
+	GrB_Vector level;
+	GrB_Index n;
+	GrB_Matrix_nrows(&n, G->A); 
+	GrB_Vector_new(&level, GrB_INT32, n);
+	
 	GrB_Vector parent = NULL;
 
 	for (int i = 0; i < n_iters; i++)
