@@ -1,0 +1,639 @@
+Algorithm: PAGERANK
+
+==============================
+Dataset: SNAP/p2p-Gnutella08
+==============================
+
+--- LAGraph ---
+iter 0: 20.491750 ms
+iter 1: 1.106958 ms
+iter 2: 1.045958 ms
+iter 3: 0.927125 ms
+iter 4: 0.909000 ms
+iter 5: 0.855875 ms
+iter 6: 0.823375 ms
+iter 7: 0.817708 ms
+iter 8: 0.816167 ms
+iter 9: 0.812834 ms
+iter 10: 0.814500 ms
+iter 11: 0.810875 ms
+iter 12: 0.811459 ms
+iter 13: 0.816583 ms
+iter 14: 0.813208 ms
+iter 15: 0.817167 ms
+iter 16: 0.820167 ms
+iter 17: 0.809959 ms
+iter 18: 0.806750 ms
+iter 19: 0.792958 ms
+iter 20: 0.780875 ms
+iter 21: 0.902750 ms
+iter 22: 0.898250 ms
+iter 23: 0.870166 ms
+iter 24: 0.857166 ms
+iter 25: 0.849125 ms
+iter 26: 0.845792 ms
+iter 27: 0.852375 ms
+iter 28: 0.839458 ms
+iter 29: 0.834375 ms
+iter 30: 0.829750 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/p2p-Gnutella08/p2p-Gnutella08.mtx"
+ Matrix size 6301 rows, 6301 cols
+ Data: 20777 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.000996 sec 20832 lines speed 2.09157e+07 lines/sec
+ Sorted in 0.001477 sec 41554 lines
+ Reduced in 0.00011 sec 41554 lines
+ Calc stats in 0.000107 sec
+ Loaded in 0.002691 sec, 41554 edges total
+ deg: min 1, max 97, avg 6.59483, sd 8.54102
+ distribution:
+  [   1 -    2):     28% ***************************
+  [   2 -    3):     14% *************
+  [   3 -    4):    8.8% ********
+  [   4 -    5):    5.9% *****
+  [   5 -    6):    3.6% ***
+  [   6 -    7):    2.6% **
+  [   7 -    8):    2.1% **
+  [   8 -   10):    2.4% **
+  [  10 -   12):     11% ***********
+  [  12 -   13):    6.5% ******
+  [  13 -   15):      8% ********
+  [  15 -   98):    7.1% *******
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 158.476
+cpu(ms): 0.569, 0.206, 0.204, 0.201, 0.2, 0.227, 0.224, 0.216, 0.212, 0.214, 0.205, 0.205, 0.201, 0.22, 0.215, 0.212, 0.206, 0.201, 0.2, 0.201, 0.2, 0.201, 0.202, 0.203, 0.203, 0.201, 0.198, 0.197, 0.198, 0.197, 0.196, 
+gpu(ms): 10.741, 0.853, 0.776, 0.736, 0.698, 0.693, 0.684, 0.679, 0.673, 0.686, 0.675, 0.671, 0.702, 0.669, 0.671, 0.68, 0.674, 0.682, 0.736, 0.867, 0.758, 0.748, 0.741, 0.723, 0.743, 0.735, 0.723, 0.742, 0.751, 0.726, 0.742, 
+ref(ms): 0.075, 
+
+
+==============================
+Dataset: SNAP/p2p-Gnutella31
+==============================
+
+--- LAGraph ---
+iter 0: 15.978334 ms
+iter 1: 15.007083 ms
+iter 2: 15.073500 ms
+iter 3: 15.063208 ms
+iter 4: 15.241292 ms
+iter 5: 15.393709 ms
+iter 6: 14.944708 ms
+iter 7: 15.345000 ms
+iter 8: 16.121458 ms
+iter 9: 16.095417 ms
+iter 10: 15.989250 ms
+iter 11: 15.175416 ms
+iter 12: 15.280542 ms
+iter 13: 15.229458 ms
+iter 14: 15.256167 ms
+iter 15: 15.116000 ms
+iter 16: 15.304208 ms
+iter 17: 15.115500 ms
+iter 18: 15.091000 ms
+iter 19: 14.995000 ms
+iter 20: 14.932667 ms
+iter 21: 15.370583 ms
+iter 22: 15.305500 ms
+iter 23: 14.959500 ms
+iter 24: 15.123875 ms
+iter 25: 15.336375 ms
+iter 26: 14.983583 ms
+iter 27: 15.021917 ms
+iter 28: 42.987291 ms
+iter 29: 29.081667 ms
+iter 30: 29.492750 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/p2p-Gnutella31/p2p-Gnutella31.mtx"
+ Matrix size 62586 rows, 62586 cols
+ Data: 147892 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.004907 sec 147946 lines speed 3.015e+07 lines/sec
+ Sorted in 0.012483 sec 295784 lines
+ Reduced in 0.000781 sec 295784 lines
+ Calc stats in 0.000742 sec
+ Loaded in 0.018915 sec, 295784 edges total
+ deg: min 1, max 95, avg 4.72604, sd 5.7012
+ distribution:
+  [    1 -     2):     46% *********************************************
+  [    2 -     3):     15% **************
+  [    3 -     4):    6.3% ******
+  [    4 -     5):    3.4% ***
+  [    5 -     6):    2.1% **
+  [    6 -     7):    1.4% *
+  [    7 -     8):    1.1% *
+  [    8 -     9):      0% 
+  [    9 -    10):      0% 
+  [   10 -    11):    1.8% *
+  [   11 -    12):    6.7% ******
+  [   12 -    13):    4.5% ****
+  [   13 -    14):    2.7% **
+  [   14 -    15):      2% *
+  [   15 -    96):      6% *****
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 220.428
+cpu(ms): 1.863, 1.795, 1.778, 1.771, 1.802, 1.789, 1.708, 1.703, 1.687, 1.694, 1.723, 1.71, 1.721, 1.714, 1.683, 1.68, 1.683, 1.686, 1.686, 1.687, 1.685, 1.676, 1.685, 1.741, 1.865, 1.67, 1.671, 1.676, 1.671, 1.669, 1.669, 
+gpu(ms): 6.027, 1.363, 1.391, 1.337, 1.298, 1.325, 1.317, 1.321, 1.328, 1.358, 1.366, 1.358, 1.443, 1.348, 1.334, 1.337, 1.48, 1.343, 1.341, 1.375, 1.4, 1.365, 1.356, 1.365, 1.493, 1.433, 1.379, 1.357, 1.399, 1.377, 1.411, 
+ref(ms): 0.78, 
+
+
+==============================
+Dataset: SNAP/soc-Epinions1
+==============================
+
+--- LAGraph ---
+iter 0: 54.081666 ms
+iter 1: 53.762875 ms
+iter 2: 52.353375 ms
+iter 3: 50.554416 ms
+iter 4: 52.599875 ms
+iter 5: 51.639583 ms
+iter 6: 51.793250 ms
+iter 7: 51.825458 ms
+iter 8: 52.281167 ms
+iter 9: 65.766541 ms
+iter 10: 58.431166 ms
+iter 11: 50.715875 ms
+iter 12: 50.572084 ms
+iter 13: 51.860083 ms
+iter 14: 50.941417 ms
+iter 15: 50.615042 ms
+iter 16: 50.472750 ms
+iter 17: 50.330083 ms
+iter 18: 50.549209 ms
+iter 19: 52.715167 ms
+iter 20: 51.804875 ms
+iter 21: 113.895542 ms
+iter 22: 50.999000 ms
+iter 23: 50.903667 ms
+iter 24: 51.033167 ms
+iter 25: 51.287083 ms
+iter 26: 51.276166 ms
+iter 27: 51.064209 ms
+iter 28: 51.169250 ms
+iter 29: 51.113541 ms
+iter 30: 50.926250 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/soc-Epinions1/soc-Epinions1.mtx"
+ Matrix size 75888 rows, 75888 cols
+ Data: 508837 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.014676 sec 508888 lines speed 3.46748e+07 lines/sec
+ Sorted in 0.043641 sec 1017674 lines
+ Reduced in 0.002558 sec 811480 lines
+ Calc stats in 0.001855 sec
+ Loaded in 0.062731 sec, 811480 edges total
+ deg: min 0, max 3044, avg 10.6931, sd 43.0339
+ distribution:
+  [    0 -     2):     47% ***********************************************
+  [    2 -     3):     15% **************
+  [    3 -     4):    7.5% *******
+  [    4 -     5):    4.7% ****
+  [    5 -     6):    3.3% ***
+  [    6 -     7):    2.5% **
+  [    7 -     8):    1.9% *
+  [    8 -     9):    1.4% *
+  [    9 -    10):    1.2% *
+  [   10 -    11):      0% 
+  [   11 -    12):      0% 
+  [   12 -    13):      0% 
+  [   13 -    14):      0% 
+  [   14 -    32):    5.4% *****
+  [   32 -  3045):    6.6% ******
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 569.804
+cpu(ms): 8.224, 8.094, 8.039, 8.103, 8.222, 8.115, 8.035, 8.106, 8.166, 8.15, 8.099, 8.104, 8.093, 8.146, 8.115, 8.187, 8.064, 8.148, 8.32, 8.199, 8.089, 8.092, 8.21, 8.131, 8.157, 8.08, 8.181, 8.112, 8.111, 8.069, 8.065, 
+gpu(ms): 10.389, 3.482, 3.73, 3.444, 3.483, 3.514, 3.579, 3.444, 3.475, 3.458, 3.508, 3.525, 3.523, 3.544, 3.521, 3.62, 3.565, 3.658, 3.711, 3.705, 3.699, 3.673, 3.713, 3.627, 3.819, 3.798, 3.774, 3.716, 3.748, 3.693, 3.71, 
+ref(ms): 3.193, 
+
+
+==============================
+Dataset: SNAP/soc-Slashdot0811
+==============================
+
+--- LAGraph ---
+iter 0: 50.756459 ms
+iter 1: 50.124500 ms
+iter 2: 50.064416 ms
+iter 3: 50.657167 ms
+iter 4: 49.723250 ms
+iter 5: 50.650958 ms
+iter 6: 50.077625 ms
+iter 7: 49.863291 ms
+iter 8: 49.928709 ms
+iter 9: 49.772750 ms
+iter 10: 49.920959 ms
+iter 11: 49.939125 ms
+iter 12: 50.167875 ms
+iter 13: 49.549541 ms
+iter 14: 50.264583 ms
+iter 15: 50.219000 ms
+iter 16: 50.375334 ms
+iter 17: 50.683500 ms
+iter 18: 50.084583 ms
+iter 19: 50.015250 ms
+iter 20: 50.172375 ms
+iter 21: 49.924792 ms
+iter 22: 49.695417 ms
+iter 23: 49.839750 ms
+iter 24: 50.389875 ms
+iter 25: 49.695833 ms
+iter 26: 50.017500 ms
+iter 27: 50.554292 ms
+iter 28: 49.724208 ms
+iter 29: 49.910000 ms
+iter 30: 50.872791 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/soc-Slashdot0811/soc-Slashdot0811.mtx"
+ Matrix size 77360 rows, 77360 cols
+ Data: 905468 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.028811 sec 905521 lines speed 3.14297e+07 lines/sec
+ Sorted in 0.071369 sec 1656322 lines
+ Reduced in 0.003091 sec 938360 lines
+ Calc stats in 0.002165 sec
+ Loaded in 0.105437 sec, 938360 edges total
+ deg: min 1, max 2539, avg 12.1298, sd 40.4522
+ distribution:
+  [    1 -     2):     36% ************************************
+  [    2 -     3):     15% **************
+  [    3 -     4):    8.5% ********
+  [    4 -     5):    5.6% *****
+  [    5 -     6):      4% ***
+  [    6 -     7):    3.1% ***
+  [    7 -     8):    2.5% **
+  [    8 -     9):      2% **
+  [    9 -    10):    1.7% *
+  [   10 -    11):    1.5% *
+  [   11 -    12):    1.2% *
+  [   12 -    13):    1.1% *
+  [   13 -    19):    4.7% ****
+  [   19 -    39):    6.2% ******
+  [   39 -  2540):    6.6% ******
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 472.002
+cpu(ms): 6.058, 4.665, 4.649, 4.918, 4.657, 4.564, 4.542, 4.703, 4.739, 4.672, 4.633, 4.633, 4.523, 4.52, 4.607, 4.711, 4.599, 4.713, 4.753, 4.624, 4.527, 4.587, 4.714, 4.522, 4.518, 4.645, 4.541, 4.529, 4.522, 4.643, 4.525, 
+gpu(ms): 10.862, 2.26, 1.935, 1.95, 2.067, 2.061, 1.926, 1.907, 1.941, 1.909, 1.908, 1.899, 1.959, 1.967, 1.959, 1.96, 1.974, 1.981, 1.964, 1.973, 2.048, 2.054, 2.067, 2.083, 2.085, 2.054, 2.043, 2.026, 2.096, 2.058, 2.041, 
+ref(ms): 1.755, 
+
+
+==============================
+Dataset: SNAP/amazon0302
+==============================
+
+--- LAGraph ---
+iter 0: 133.814208 ms
+iter 1: 129.858791 ms
+iter 2: 129.598542 ms
+iter 3: 129.545042 ms
+iter 4: 128.764750 ms
+iter 5: 129.254458 ms
+iter 6: 129.456833 ms
+iter 7: 129.847416 ms
+iter 8: 129.501792 ms
+iter 9: 128.554750 ms
+iter 10: 129.066958 ms
+iter 11: 128.945625 ms
+iter 12: 129.279208 ms
+iter 13: 127.068292 ms
+iter 14: 128.678042 ms
+iter 15: 130.958292 ms
+iter 16: 127.959041 ms
+iter 17: 127.800458 ms
+iter 18: 130.555708 ms
+iter 19: 128.461417 ms
+iter 20: 128.856958 ms
+iter 21: 128.357750 ms
+iter 22: 128.008542 ms
+iter 23: 129.315834 ms
+iter 24: 128.996000 ms
+iter 25: 130.985833 ms
+iter 26: 129.191333 ms
+iter 27: 129.119833 ms
+iter 28: 129.631083 ms
+iter 29: 130.361125 ms
+iter 30: 129.566583 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/amazon0302/amazon0302.mtx"
+ Matrix size 262111 rows, 262111 cols
+ Data: 1234877 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.041418 sec 1234928 lines speed 2.98162e+07 lines/sec
+ Sorted in 0.117205 sec 2469754 lines
+ Reduced in 0.006901 sec 1799584 lines
+ Calc stats in 0.004826 sec
+ Loaded in 0.170351 sec, 1799584 edges total
+ deg: min 1, max 420, avg 6.86573, sd 5.41471
+ distribution:
+  [     1 -      4):    7.2% *******
+  [     4 -      6):     38% **************************************
+  [     6 -      7):     20% *******************
+  [     7 -      8):     11% **********
+  [     8 -      9):    6.8% ******
+  [     9 -     10):    4.5% ****
+  [    10 -     11):      3% ***
+  [    11 -     12):    2.2% **
+  [    12 -     13):    1.6% *
+  [    13 -     14):    1.1% *
+  [    14 -     15):      0% 
+  [    15 -     16):      0% 
+  [    16 -     17):      0% 
+  [    17 -     18):      0% 
+  [    18 -     19):      0% 
+  [    19 -     20):      0% 
+  [    20 -    421):    1.8% *
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 899.625
+cpu(ms): 9.01, 9.619, 8.622, 8.759, 8.739, 8.981, 8.365, 8.338, 8.506, 8.363, 8.527, 8.666, 8.856, 8.427, 8.875, 8.669, 8.635, 8.729, 8.607, 8.563, 8.841, 8.62, 8.714, 9.607, 8.825, 8.754, 8.37, 8.739, 8.474, 8.478, 8.417, 
+gpu(ms): 25.804, 5.234, 4.666, 5.028, 5.801, 3.935, 3.885, 3.929, 3.988, 4.011, 4.003, 3.908, 3.852, 3.904, 3.922, 3.757, 3.603, 3.581, 3.565, 3.61, 3.765, 3.616, 3.76, 3.574, 3.699, 3.889, 4.484, 3.49, 3.601, 3.558, 3.543, 
+ref(ms): 3.594, 
+
+
+==============================
+Dataset: SNAP/web-BerkStan
+==============================
+
+--- LAGraph ---
+iter 0: 515.502875 ms
+iter 1: 514.052708 ms
+iter 2: 514.020500 ms
+iter 3: 516.458042 ms
+iter 4: 516.987542 ms
+iter 5: 513.324917 ms
+iter 6: 519.367167 ms
+iter 7: 524.871458 ms
+iter 8: 539.649083 ms
+iter 9: 526.991750 ms
+iter 10: 519.057708 ms
+iter 11: 514.214208 ms
+iter 12: 516.784750 ms
+iter 13: 537.622750 ms
+iter 14: 528.497375 ms
+iter 15: 527.128000 ms
+iter 16: 523.046625 ms
+iter 17: 629.667167 ms
+iter 18: 518.806667 ms
+iter 19: 513.060708 ms
+iter 20: 520.396417 ms
+iter 21: 514.845292 ms
+iter 22: 514.168625 ms
+iter 23: 522.766333 ms
+iter 24: 516.807084 ms
+iter 25: 516.207000 ms
+iter 26: 527.340708 ms
+iter 27: 552.689416 ms
+iter 28: 513.716791 ms
+iter 29: 512.444958 ms
+iter 30: 516.736292 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/web-BerkStan/web-BerkStan.mtx"
+ Matrix size 685230 rows, 685230 cols
+ Data: 7600595 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.270948 sec 7600658 lines speed 2.80521e+07 lines/sec
+ Sorted in 0.51787 sec 15201190 lines
+ Reduced in 0.037015 sec 13298940 lines
+ Calc stats in 0.034909 sec
+ Loaded in 0.860744 sec, 13298940 edges total
+ deg: min 1, max 84230, avg 19.408, sd 273.952
+ distribution:
+  [     1 -      2):    5.9% *****
+  [     2 -      3):    9.3% *********
+  [     3 -      4):    8.8% ********
+  [     4 -      5):    7.6% *******
+  [     5 -      6):    7.6% *******
+  [     6 -      7):      6% *****
+  [     7 -      8):    6.3% ******
+  [     8 -      9):    4.7% ****
+  [     9 -     10):    3.7% ***
+  [    10 -     11):    2.9% **
+  [    11 -     12):      4% ****
+  [    12 -     13):    3.4% ***
+  [    13 -     14):    1.7% *
+  [    14 -     16):    2.6% **
+  [    16 -     21):    4.9% ****
+  [    21 -     25):    5.5% *****
+  [    25 -     36):    5.3% *****
+  [    36 -     52):    4.8% ****
+  [    52 -  84231):    5.1% *****
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 4366.39
+cpu(ms): 68.81, 59.632, 58.901, 58.33, 58.317, 58.836, 58.222, 58.95, 58.768, 57.955, 61.864, 130.641, 61.48, 58.496, 58.362, 58.161, 57.626, 57.743, 58.556, 60.446, 60.573, 57.751, 57.805, 57.738, 58.826, 58.773, 57.939, 57.843, 57.798, 58.21, 57.725, 
+gpu(ms): 83.098, 10.923, 11.486, 9.178, 9.427, 9.493, 9.561, 9.602, 9.916, 10.153, 10.206, 10.388, 10.737, 10.788, 10.853, 11.329, 11.247, 10.247, 11.031, 11.248, 10.176, 10.318, 10.524, 10.968, 11.134, 11.213, 11.221, 11.924, 11.228, 11.245, 11.595, 
+ref(ms): 21.261, 
+
+
+==============================
+Dataset: SNAP/soc-Pokec
+==============================
+
+--- LAGraph ---
+iter 0: 1649.483792 ms
+iter 1: 1610.065833 ms
+iter 2: 1690.747042 ms
+iter 3: 1625.482500 ms
+iter 4: 1700.836416 ms
+iter 5: 1695.800708 ms
+iter 6: 1601.060042 ms
+iter 7: 1612.064125 ms
+iter 8: 1606.127625 ms
+iter 9: 1649.185334 ms
+iter 10: 1607.440500 ms
+iter 11: 1615.824833 ms
+iter 12: 1617.368833 ms
+iter 13: 1582.394500 ms
+iter 14: 1618.928666 ms
+iter 15: 1727.684916 ms
+iter 16: 1645.454083 ms
+iter 17: 1690.092500 ms
+iter 18: 1777.409125 ms
+iter 19: 1760.742666 ms
+iter 20: 1642.071083 ms
+iter 21: 1915.733250 ms
+iter 22: 1945.750083 ms
+iter 23: 1655.447375 ms
+iter 24: 1741.232750 ms
+iter 25: 1678.066125 ms
+iter 26: 1658.948709 ms
+iter 27: 1803.728000 ms
+iter 28: 1797.855459 ms
+iter 29: 1687.898667 ms
+iter 30: 1621.731459 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/soc-Pokec/soc-Pokec.mtx"
+ Matrix size 1632803 rows, 1632803 cols
+ Data: 30622564 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 1.13955 sec 30622767 lines speed 2.68727e+07 lines/sec
+ Sorted in 3.90565 sec 61245128 lines
+ Reduced in 0.23083 sec 44603928 lines
+ Calc stats in 0.135052 sec
+ Loaded in 5.41108 sec, 44603928 edges total
+ deg: min 1, max 14854, avg 27.3174, sd 42.8519
+ distribution:
+  [      1 -       2):     10% **********
+  [      2 -       3):      7% ******
+  [      3 -       4):    5.4% *****
+  [      4 -       5):    4.5% ****
+  [      5 -       6):    3.8% ***
+  [      6 -       7):    3.4% ***
+  [      7 -       8):      3% **
+  [      8 -      10):    5.2% *****
+  [     10 -      12):    4.4% ****
+  [     12 -      14):    3.8% ***
+  [     14 -      17):    4.9% ****
+  [     17 -      21):    5.5% *****
+  [     21 -      25):    4.6% ****
+  [     25 -      30):    4.9% ****
+  [     30 -      36):    4.8% ****
+  [     36 -      44):      5% ****
+  [     44 -      55):    5.1% *****
+  [     55 -      71):      5% ****
+  [     71 -     100):    4.9% ****
+  [    100 -   14855):    4.9% ****
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 20788.2
+cpu(ms): 594.103, 378.831, 571.959, 235.872, 255.02, 225.247, 241.602, 234.324, 247.216, 258.902, 247.455, 249.91, 238.686, 237.609, 261.852, 255.798, 227.272, 282.95, 315.521, 274.486, 287.629, 318.488, 293.642, 275.718, 254.543, 267.893, 279.903, 250.968, 253.462, 238.288, 420.125, 
+gpu(ms): 526.053, 51.154, 44.496, 51.336, 47.211, 49.547, 47.436, 45.497, 44.257, 42.411, 44.917, 47.72, 43.919, 53.083, 46.305, 46.09, 43.917, 38.961, 38.216, 42.649, 42.709, 41.309, 44.072, 43.313, 43.7, 44.579, 44.335, 44.182, 46.049, 47.999, 40.584, 
+ref(ms): 265.889, 
+
+
+==============================
+Dataset: SNAP/soc-LiveJournal1
+==============================
+
+--- LAGraph ---
+iter 0: 5848.547375 ms
+iter 1: 5717.013333 ms
+iter 2: 5478.297709 ms
+iter 3: 5582.984000 ms
+iter 4: 5901.135875 ms
+iter 5: 6256.007708 ms
+iter 6: 6084.565500 ms
+iter 7: 5684.689500 ms
+iter 8: 5850.582042 ms
+iter 9: 5968.954375 ms
+iter 10: 5746.516250 ms
+iter 11: 5470.568417 ms
+iter 12: 5861.214333 ms
+iter 13: 5998.792667 ms
+iter 14: 6292.014875 ms
+iter 15: 6425.310750 ms
+iter 16: 5753.779250 ms
+iter 17: 5959.724834 ms
+iter 18: 5912.076042 ms
+iter 19: 6460.110417 ms
+iter 20: 5969.592250 ms
+iter 21: 6597.378708 ms
+iter 22: 6101.872166 ms
+iter 23: 6428.043708 ms
+iter 24: 6118.457958 ms
+iter 25: 6532.710791 ms
+iter 26: 6463.858667 ms
+iter 27: 5834.236792 ms
+iter 28: 5741.416459 ms
+iter 29: 6146.223250 ms
+iter 30: 6506.483167 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/soc-LiveJournal1/soc-LiveJournal1.mtx"
+ Matrix size 4847571 rows, 4847571 cols
+ Data: 68993773 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 2.74477 sec 68993829 lines speed 2.51365e+07 lines/sec
+ Sorted in 10.0179 sec 136950782 lines
+ Reduced in 0.782555 sec 85702474 lines
+ Calc stats in 0.281402 sec
+ Loaded in 13.8267 sec, 85702474 edges total
+ deg: min 0, max 20333, avg 17.6795, sd 52.0034
+ distribution:
+  [      0 -       2):     22% *********************
+  [      2 -       3):     11% ***********
+  [      3 -       4):    7.6% *******
+  [      4 -       5):    5.7% *****
+  [      5 -       6):    4.6% ****
+  [      6 -       7):    3.7% ***
+  [      7 -       8):    3.2% ***
+  [      8 -       9):    2.7% **
+  [      9 -      10):    2.4% **
+  [     10 -      11):    2.1% **
+  [     11 -      12):    1.9% *
+  [     12 -      13):    1.7% *
+  [     13 -      14):    1.6% *
+  [     14 -      15):    1.5% *
+  [     15 -      16):    1.3% *
+  [     16 -      19):    3.5% ***
+  [     19 -      24):    4.4% ****
+  [     24 -      32):    4.8% ****
+  [     32 -      44):    4.5% ****
+  [     44 -      72):    4.8% ****
+  [     72 -   20334):    4.7% ****
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 69518.3
+cpu(ms): 1565.82, 1272.79, 1344.42, 1686.65, 1429.29, 1237.28, 1250.92, 1126.93, 1109.15, 1100.83, 1114.24, 1116.11, 1175.52, 1100.29, 1090.01, 1094.56, 1088.97, 1102.99, 1086.86, 1087.05, 1086.99, 1095.31, 1105.55, 1129.52, 1179.51, 1187.14, 1103.84, 1135.25, 1344.19, 1221.17, 1373.39, 
+gpu(ms): 839.104, 256.307, 260.604, 251.81, 226.366, 255.25, 225.404, 256.533, 232.15, 254.446, 217.707, 219.637, 215.85, 218.554, 221.118, 230.509, 245.676, 218.036, 214.316, 218.218, 232.707, 227.05, 221.056, 221.946, 247.868, 244.333, 239.077, 255.939, 225.007, 208.507, 208.488, 
+ref(ms): 832.973, 
+
