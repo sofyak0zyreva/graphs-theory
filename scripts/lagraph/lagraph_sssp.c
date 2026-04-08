@@ -8,7 +8,7 @@ int main(int argc, char **argv)
 {
 	if (argc < 5)
 	{
-		printf("Usage: %s matrix.mtx n_iters source\n", argv[0]);
+		printf("Usage: %s matrix.mtx n_iters source delta\n", argv[0]);
 		return 1;
 	}
 
@@ -19,8 +19,9 @@ int main(int argc, char **argv)
 	GrB_Index src = atoi(argv[3]);
 	float delta = atoi(argv[4]);
 
-	LAGraph_Graph G = createGraph(mtx_path);
+	LAGraph_Graph G = createGraph(mtx_path, LAGraph_ADJACENCY_DIRECTED);
 
+	printf("Graph loaded\n");
 	// required for better performance
 	LAGraph_Cached_EMin(G, msg);
 
@@ -51,15 +52,11 @@ int main(int argc, char **argv)
 
 		printf("iter %d: %.6f ms\n", i, elapsed_ms);
 
-		// cleanup
-		// GrB_free(&level);
-		// GrB_free(&parent);
 	}
 
-	LAGraph_Delete(&G, NULL);
-	// GrB_free(&A);
+	LAGraph_Delete(&G, msg);
 
-	LAGraph_Finalize(NULL);
+	LAGraph_Finalize(msg);
 	GrB_finalize();
 
 	return 0;

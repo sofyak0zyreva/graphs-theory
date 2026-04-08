@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 # we will not consider the first perf result
-N_ITERS = 6
+N_ITERS = 31
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA_DIR = ROOT / "data"
@@ -16,6 +16,9 @@ SPLA_PR_BIN = ROOT / "external/spla/build/pr"
 
 LAGRAPH_SSSP_BIN = ROOT / "build/lagraph_sssp"
 SPLA_SSSP_BIN = ROOT / "external/spla/build/sssp"
+
+LAGRAPH_TC_BIN = ROOT / "build/lagraph_tc"
+SPLA_TC_SRC = ROOT / "external/spla/build/tc"
 
 def build_path(group, name):
     return os.path.join(DATA_DIR, group, f"{name}.mtx")

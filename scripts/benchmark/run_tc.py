@@ -1,12 +1,12 @@
 import os
 import subprocess
-from scripts.datasets import PAGERANK_DATASETS
+from scripts.datasets import TC_DATASETS
 from scripts.benchmark.vars import *
 
 
 def run_lagraph(mtx_path):
     cmd = [
-        LAGRAPH_PR_BIN,
+        LAGRAPH_TC_BIN,
         mtx_path,
         str(N_ITERS),
     ]
@@ -15,7 +15,7 @@ def run_lagraph(mtx_path):
 
 def run_spla(mtx_path):
     cmd = [
-        SPLA_PR_BIN,
+        SPLA_TC_SRC,
         f"--mtxpath={mtx_path}",
         f"--niters={N_ITERS}"
     ]
@@ -23,8 +23,8 @@ def run_spla(mtx_path):
 
 
 def run_all():
-    print(f"Algorithm: PAGERANK")
-    for group, name in PAGERANK_DATASETS:
+    print(f"Algorithm: TRIANGLE COUNT")
+    for group, name in TC_DATASETS:
         mtx_path = build_path(name, name)
 
         print("\n==============================")

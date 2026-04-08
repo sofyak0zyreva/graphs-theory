@@ -17,38 +17,32 @@ int main(int argc, char **argv)
 
 	int n_iters = atoi(argv[2]);
 
-	LAGraph_Graph G = createGraph(mtx_path, LAGraph_ADJACENCY_DIRECTED);
-
-	// required for better performance
-	LAGraph_Cached_OutDegree(G, msg);
-	LAGraph_Cached_AT(G, msg);
+	LAGraph_Graph G = createGraph(mtx_path, LAGraph_ADJACENCY_UNDIRECTED);
 
 	// algo params
-	GrB_Vector centrality;
-	int iters;
-	float damping = 0.85;
-	float tol = 1e-6;
-	int itermax = 100;
+	uint64_t ntriangles;
+	LAGr_TriangleCount_Method method = LAGr_TriangleCount_Burkhardt;
+
+	LAGraph_Cached_NSelfEdges(G, msg);
+	LAGraph_Cached_OutDegree(G, msg);
 
 	for (int i = 0; i < n_iters; i++)
 	{
 		double t0 = LAGraph_WallClockTime();
 
-		int status = LAGr_PageRank(&centrality, &iters, G, damping, tol, itermax, msg);
+		int status = LAGr_TriangleCount(&ntriangles, G, &method, NULL, msg);
 
 		double t1 = LAGraph_WallClockTime();
 
 		if (status != GrB_SUCCESS)
 		{
-			printf("PAGERANK failed\n");
+			printf("TC failed %d\n", status);
 		}
+		// printf("TC num: %llu\n", (unsigned long long)ntriangles);
 
 		double elapsed_ms = (t1 - t0) * 1000.0;
 
 		printf("iter %d: %.6f ms\n", i, elapsed_ms);
-
-		// cleanup
-		GrB_free(&centrality);
 	}
 
 	LAGraph_Delete(&G, msg);
