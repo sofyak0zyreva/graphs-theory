@@ -1,0 +1,17 @@
+Graph,Method,Time (ms),Avg degree,Edges
+p2p-Gnutella08,LAGraph,0.85,6.59483,20777
+p2p-Gnutella08,Spla,0.72,6.59483,20777
+p2p-Gnutella31,LAGraph,17.0,4.72604,147892
+p2p-Gnutella31,Spla,1.37,4.72604,147892
+soc-Epinions1,LAGraph,54.0,10.6931,508837
+soc-Epinions1,Spla,3.62,10.6931,508837
+soc-Slashdot0811,LAGraph,50.1,12.1298,905468
+soc-Slashdot0811,Spla,2.01,12.1298,905468
+amazon0302,LAGraph,129.2,6.86573,1234877
+amazon0302,Spla,4.0,6.86573,1234877
+web-BerkStan,LAGraph,525.0,19.408,7600595
+web-BerkStan,Spla,10.6,19.408,7600595
+soc-Pokec,LAGraph,1686.0,27.3174,30622564
+soc-Pokec,Spla,45.0,27.3174,30622564
+soc-LiveJournal1,LAGraph,6028.0,17.6795,68993773
+soc-LiveJournal1,Spla,232.0,17.6795,68993773

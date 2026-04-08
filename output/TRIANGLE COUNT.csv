@@ -1,0 +1,15 @@
+Graph,Method,Time (ms),Avg degree,Edges
+delaunay_n13,LAGraph,4.3,5.99292,24547
+delaunay_n13,Spla,0.63,5.99292,24547
+usroads,LAGraph,7.01,2.56163,165435
+usroads,Spla,1.9,2.56163,165435
+fe_rotor,LAGraph,184.0,13.2996,662431
+fe_rotor,Spla,3.5,13.2996,662431
+roadNet-CA,LAGraph,125.9,2.80691,2766607
+roadNet-CA,Spla,10.5,2.80691,2766607
+italy_osm,LAGraph,269.0,2.09795,7013978
+italy_osm,Spla,31.5,2.09795,7013978
+as-Skitter,LAGraph,12421.0,13.0809,11095298
+as-Skitter,Spla,156.0,13.0809,11095298
+road_usa,LAGraph,1294.0,2.40981,28854312
+road_usa,Spla,122.0,2.40981,28854312
