@@ -1,0 +1,8 @@
+matplotlib==3.10.8
+numpy==2.4.4
+pandas==3.0.2
+pillow==12.2.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+requests==2.33.1
+scipy==1.17.1
