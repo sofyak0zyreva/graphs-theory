@@ -1,6 +1,6 @@
 from scripts.benchmark.vars import build_path
 from scripts.datasets import SSSP_DATASETS
-import numpy as np
+import numpy as np  # type: ignore
 
 
 # for sssp, so that we use the same delta everywhere

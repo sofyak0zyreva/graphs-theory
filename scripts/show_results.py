@@ -1,5 +1,5 @@
 import re
-import numpy as np
+import numpy as np  # type: ignore
 import matplotlib.pyplot as plt  # type: ignore
 import pandas as pd  # type: ignore
 from scripts.benchmark.vars import *
