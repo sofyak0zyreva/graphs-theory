@@ -20,5 +20,6 @@ SPLA_SSSP_BIN = ROOT / "external/spla/build/sssp"
 LAGRAPH_TC_BIN = ROOT / "build/lagraph_tc"
 SPLA_TC_SRC = ROOT / "external/spla/build/tc"
 
+
 def build_path(group, name):
     return os.path.join(DATA_DIR, group, f"{name}.mtx")

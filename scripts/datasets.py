@@ -23,7 +23,7 @@ SSSP_DATASETS = [
     ("Williams", "pdb1HYS"),
     ("GAP", "GAP-road"),
     ("vanHeukelum", "cage14"),
-    ("vanHeukelum", "cage15")  # a 100M edges and high avg vertex degree (19)
+    ("vanHeukelum", "cage15"),  # a 100M edges and high avg vertex degree (19)
 ]
 
 # unweighted directed graphs with 20k - 68.9M edges
@@ -51,10 +51,5 @@ TC_DATASETS = [
 
 
 def collect_all_datasets():
-    all_sets = (
-        BFS_DATASETS +
-        PAGERANK_DATASETS +
-        TC_DATASETS +
-        SSSP_DATASETS
-    )
+    all_sets = BFS_DATASETS + PAGERANK_DATASETS + TC_DATASETS + SSSP_DATASETS
     return list(set(all_sets))

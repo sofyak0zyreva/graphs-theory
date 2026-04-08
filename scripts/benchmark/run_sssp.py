@@ -4,14 +4,9 @@ from scripts.benchmark.vars import *
 
 SOURCE = 0
 
+
 def run_lagraph(mtx_path):
-    cmd = [
-        LAGRAPH_SSSP_BIN,
-        mtx_path,
-        str(N_ITERS),
-        str(SOURCE),
-        str(0.1)
-    ]
+    cmd = [LAGRAPH_SSSP_BIN, mtx_path, str(N_ITERS), str(SOURCE), str(0.1)]
     return subprocess.run(cmd, capture_output=True, text=True)
 
 
@@ -20,7 +15,7 @@ def run_spla(mtx_path):
         SPLA_SSSP_BIN,
         f"--mtxpath={mtx_path}",
         f"--niters={N_ITERS}",
-        f"--source={SOURCE}"
+        f"--source={SOURCE}",
     ]
     return subprocess.run(cmd, capture_output=True, text=True)
 
@@ -28,7 +23,7 @@ def run_spla(mtx_path):
 def run_all():
     print(f"Algorithm: SSSP")
     for group, name in SSSP_DATASETS:
-        mtx_path = build_path(name, name+"_norm")
+        mtx_path = build_path(name, name + "_norm")
 
         print("\n==============================")
         print(f"Dataset: {group}/{name}")

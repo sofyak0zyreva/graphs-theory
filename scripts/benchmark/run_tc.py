@@ -14,11 +14,7 @@ def run_lagraph(mtx_path):
 
 
 def run_spla(mtx_path):
-    cmd = [
-        SPLA_TC_SRC,
-        f"--mtxpath={mtx_path}",
-        f"--niters={N_ITERS}"
-    ]
+    cmd = [SPLA_TC_SRC, f"--mtxpath={mtx_path}", f"--niters={N_ITERS}"]
     return subprocess.run(cmd, capture_output=True, text=True)
 
 

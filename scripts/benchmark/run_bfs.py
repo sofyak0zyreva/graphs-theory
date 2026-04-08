@@ -4,13 +4,9 @@ from scripts.benchmark.vars import *
 
 SOURCE = 0
 
+
 def run_lagraph(mtx_path):
-    cmd = [
-        LAGRAPH_BFS_BIN,
-        mtx_path,
-        str(N_ITERS),
-        str(SOURCE)
-    ]
+    cmd = [LAGRAPH_BFS_BIN, mtx_path, str(N_ITERS), str(SOURCE)]
     return subprocess.run(cmd, capture_output=True, text=True)
 
 
@@ -19,7 +15,7 @@ def run_spla(mtx_path):
         SPLA_BFS_BIN,
         f"--mtxpath={mtx_path}",
         f"--niters={N_ITERS}",
-        f"--source={SOURCE}"
+        f"--source={SOURCE}",
     ]
     return subprocess.run(cmd, capture_output=True, text=True)
 

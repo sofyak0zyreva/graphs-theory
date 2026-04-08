@@ -1,9 +1,8 @@
 import os
 import tarfile
-import requests
+import requests  # type: ignore
 from pathlib import Path
-from datasets import collect_all_datasets
-
+from scripts.datasets import collect_all_datasets
 
 # config
 
@@ -12,6 +11,7 @@ DATA_DIR = Path("data")
 
 
 # download
+
 
 def download_file(url, output_path):
     response = requests.get(url, stream=True)
@@ -24,12 +24,14 @@ def download_file(url, output_path):
 
 # extract
 
+
 def extract_tar(archive_path, extract_to):
     with tarfile.open(archive_path, "r:gz") as tar:
         tar.extractall(path=extract_to)
 
 
 # find mtx
+
 
 def find_mtx_file(folder):
     for root, _, files in os.walk(folder):
@@ -40,6 +42,7 @@ def find_mtx_file(folder):
 
 
 # main pipeline
+
 
 def process_dataset(group, name):
     print(f"\n=== {name} ===")

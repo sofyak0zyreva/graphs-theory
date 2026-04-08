@@ -1,7 +1,7 @@
 import re
 import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
+import matplotlib.pyplot as plt  # type: ignore
+import pandas as pd  # type: ignore
 from scripts.benchmark.vars import *
 
 
@@ -17,7 +17,7 @@ def round_error(err):
     if err == 0:
         return 0
 
-    first_digit = int(str(abs(err)).replace('.', '').lstrip('0')[0])
+    first_digit = int(str(abs(err)).replace(".", "").lstrip("0")[0])
 
     sig_digits = 2 if first_digit == 1 else 1
     return significant_round(err, sig_digits)
@@ -25,9 +25,9 @@ def round_error(err):
 
 def match_decimal_places(mean, err):
     """Round mean to same decimal precision as error"""
-    err_str = f"{err:.10f}".rstrip('0')
-    if '.' in err_str:
-        decimals = len(err_str.split('.')[1])
+    err_str = f"{err:.10f}".rstrip("0")
+    if "." in err_str:
+        decimals = len(err_str.split(".")[1])
     else:
         decimals = 0
 
@@ -59,7 +59,8 @@ def parse_spla_gpu(section):
 
 def parse_spla_stats(section):
     deg_match = re.search(
-        r"deg:\s*min\s*[\d\.]+,\s*max\s*[\d\.]+,\s*avg\s*([\d\.]+)", section)
+        r"deg:\s*min\s*[\d\.]+,\s*max\s*[\d\.]+,\s*avg\s*([\d\.]+)", section
+    )
     edges_match = re.search(r"Data:\s*([\d]+)\s*directed edges", section)
 
     avg_deg = float(deg_match.group(1)) if deg_match else None
@@ -76,24 +77,26 @@ def extract_datasets(text):
         name_match = re.match(r"\s*([^\n]+)", block)
         dataset_name = name_match.group(1).strip() if name_match else "Unknown"
 
-        lagraph_section = re.search(
-            r"--- LAGraph ---([\s\S]*?)--- Spla ---", block)
+        lagraph_section = re.search(r"--- LAGraph ---([\s\S]*?)--- Spla ---", block)
         spla_section = re.search(r"--- Spla ---([\s\S]*)", block)
 
-        lagraph_values = parse_lagraph(
-            lagraph_section.group(1)) if lagraph_section else []
-        spla_gpu_values = parse_spla_gpu(
-            spla_section.group(1)) if spla_section else []
-        avg_deg, edges = parse_spla_stats(
-            spla_section.group(1)) if spla_section else (None, None)
+        lagraph_values = (
+            parse_lagraph(lagraph_section.group(1)) if lagraph_section else []
+        )
+        spla_gpu_values = parse_spla_gpu(spla_section.group(1)) if spla_section else []
+        avg_deg, edges = (
+            parse_spla_stats(spla_section.group(1)) if spla_section else (None, None)
+        )
 
-        results.append({
-            "name": dataset_name,
-            "lagraph": lagraph_values,
-            "spla": spla_gpu_values,
-            "avg_deg": avg_deg,
-            "edges": edges
-        })
+        results.append(
+            {
+                "name": dataset_name,
+                "lagraph": lagraph_values,
+                "spla": spla_gpu_values,
+                "avg_deg": avg_deg,
+                "edges": edges,
+            }
+        )
 
     return results
 
@@ -117,12 +120,14 @@ def make_table(dataset):
     lag_mean, _ = process_stats(dataset["lagraph"])
     spl_mean, _ = process_stats(dataset["spla"])
 
-    df = pd.DataFrame({
-        "Method": ["LAGraph", "Spla"],
-        "Time (ms)": [lag_mean, spl_mean],
-        "Avg degree": [dataset["avg_deg"], dataset["avg_deg"]],
-        "Edges": [dataset["edges"], dataset["edges"]]
-    })
+    df = pd.DataFrame(
+        {
+            "Method": ["LAGraph", "Spla"],
+            "Time (ms)": [lag_mean, spl_mean],
+            "Avg degree": [dataset["avg_deg"], dataset["avg_deg"]],
+            "Edges": [dataset["edges"], dataset["edges"]],
+        }
+    )
 
     return df
 
@@ -154,8 +159,8 @@ def plot_file(datasets, algo_name, save_dir):
 
     plt.figure(figsize=(12, 6))
 
-    bars1 = plt.bar(x - width/2, lag_means, width, label='LAGraph')
-    bars2 = plt.bar(x + width/2, spl_means, width, label='Spla')
+    bars1 = plt.bar(x - width / 2, lag_means, width, label="LAGraph")
+    bars2 = plt.bar(x + width / 2, spl_means, width, label="Spla")
 
     # --- подписи над столбиками ---
     def add_labels(bars):
@@ -164,16 +169,16 @@ def plot_file(datasets, algo_name, save_dir):
             plt.text(
                 bar.get_x() + bar.get_width() / 2,
                 height,
-                f'{height:.2f}',
-                ha='center',
-                va='bottom',
-                fontsize=9
+                f"{height:.2f}",
+                ha="center",
+                va="bottom",
+                fontsize=9,
             )
 
     add_labels(bars1)
     add_labels(bars2)
 
-    plt.xticks(x, names, rotation=30, ha='right')
+    plt.xticks(x, names, rotation=30, ha="right")
     plt.ylabel("Time (ms)")
     plt.title(algo_name)
     plt.legend()
@@ -182,7 +187,7 @@ def plot_file(datasets, algo_name, save_dir):
 
     os.makedirs(save_dir, exist_ok=True)
     filepath = os.path.join(save_dir, f"{algo_name}.png")
-    plt.savefig(filepath, dpi=300, bbox_inches='tight')
+    plt.savefig(filepath, dpi=300, bbox_inches="tight")
     plt.close()
 
 
@@ -199,21 +204,25 @@ def save_tables(datasets, algo_name, save_dir):
 
         graph_name = ds["name"].split("/")[-1]
 
-        rows.append({
-            "Graph": graph_name,
-            "Method": "LAGraph",
-            "Time (ms)": lag_mean,
-            "Avg degree": ds["avg_deg"],
-            "Edges": ds["edges"]
-        })
+        rows.append(
+            {
+                "Graph": graph_name,
+                "Method": "LAGraph",
+                "Time (ms)": lag_mean,
+                "Avg degree": ds["avg_deg"],
+                "Edges": ds["edges"],
+            }
+        )
 
-        rows.append({
-            "Graph": graph_name,
-            "Method": "Spla",
-            "Time (ms)": spl_mean,
-            "Avg degree": ds["avg_deg"],
-            "Edges": ds["edges"]
-        })
+        rows.append(
+            {
+                "Graph": graph_name,
+                "Method": "Spla",
+                "Time (ms)": spl_mean,
+                "Avg degree": ds["avg_deg"],
+                "Edges": ds["edges"],
+            }
+        )
 
     df = pd.DataFrame(rows)
 
@@ -235,13 +244,10 @@ def process_file(filepath, save_dir):
 
 def save_table_as_png(df, output_path):
     fig, ax = plt.subplots(figsize=(12, len(df) * 0.5 + 2))
-    ax.axis('off')
+    ax.axis("off")
 
     table = ax.table(
-        cellText=df.values,
-        colLabels=df.columns,
-        cellLoc='center',
-        loc='center'
+        cellText=df.values, colLabels=df.columns, cellLoc="center", loc="center"
     )
 
     table.auto_set_font_size(False)
@@ -249,7 +255,7 @@ def save_table_as_png(df, output_path):
     table.scale(1, 1.5)
 
     plt.tight_layout()
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close()
 
 
@@ -257,14 +263,13 @@ if __name__ == "__main__":
     save_dir = os.path.join(ROOT, "output")
     names = ["bfs", "pr", "sssp", "tc"]
     for name in names:
-        filepath = os.path.join(
-            ROOT, "scripts/benchmark/results/"+f"{name}.txt")
+        filepath = os.path.join(ROOT, "scripts/benchmark/results/" + f"{name}.txt")
         process_file(filepath, save_dir)
     folder_names = ["BFS", "PAGERANK", "SSSP", "TRIANGLE COUNT"]
     for folder_name in folder_names:
-        read_dir = os.path.join(ROOT, "output/"+f"{folder_name}.csv")
+        read_dir = os.path.join(ROOT, "output/" + f"{folder_name}.csv")
         df = pd.read_csv(read_dir)
         print(df.to_string(index=False))
         print("\n")
-        write_dir = os.path.join(ROOT, "output/"+f"{folder_name}_table.png")
+        write_dir = os.path.join(ROOT, "output/" + f"{folder_name}_table.png")
         save_table_as_png(df, write_dir)
