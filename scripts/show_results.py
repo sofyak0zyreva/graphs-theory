@@ -209,6 +209,7 @@ def save_tables(datasets, algo_name, save_dir):
                 "Graph": graph_name,
                 "Method": "LAGraph",
                 "Time (ms)": lag_mean,
+                "Err (ms)": lag_err,
                 "Avg degree": ds["avg_deg"],
                 "Edges": ds["edges"],
             }
@@ -219,6 +220,7 @@ def save_tables(datasets, algo_name, save_dir):
                 "Graph": graph_name,
                 "Method": "Spla",
                 "Time (ms)": spl_mean,
+                "Err (ms)": spl_err,
                 "Avg degree": ds["avg_deg"],
                 "Edges": ds["edges"],
             }
