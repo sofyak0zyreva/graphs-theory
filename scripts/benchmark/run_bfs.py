@@ -1,13 +1,8 @@
-import os
 import subprocess
 from scripts.datasets import BFS_DATASETS
 from scripts.benchmark.vars import *
 
 SOURCE = 0
-
-def build_path(group, name):
-    return os.path.join(DATA_DIR, group, f"{name}.mtx")
-
 
 def run_lagraph(mtx_path):
     cmd = [

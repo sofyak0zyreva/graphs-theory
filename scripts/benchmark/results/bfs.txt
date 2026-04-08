@@ -1,0 +1,702 @@
+Algorithm: BFS
+
+==============================
+Dataset: DIMACS10/citationCiteseer
+==============================
+
+--- LAGraph ---
+iter 0: 21.243125 ms
+iter 1: 15.404875 ms
+iter 2: 15.912666 ms
+iter 3: 15.265375 ms
+iter 4: 14.988167 ms
+iter 5: 15.079500 ms
+iter 6: 15.363000 ms
+iter 7: 15.203292 ms
+iter 8: 15.139250 ms
+iter 9: 15.754709 ms
+iter 10: 15.294375 ms
+iter 11: 15.531875 ms
+iter 12: 15.239542 ms
+iter 13: 15.055417 ms
+iter 14: 15.054875 ms
+iter 15: 15.053375 ms
+iter 16: 15.069917 ms
+iter 17: 15.193459 ms
+iter 18: 15.170083 ms
+iter 19: 15.104333 ms
+iter 20: 15.036875 ms
+iter 21: 15.285083 ms
+iter 22: 15.445833 ms
+iter 23: 14.982209 ms
+iter 24: 15.194541 ms
+iter 25: 15.366083 ms
+iter 26: 15.400458 ms
+iter 27: 15.141000 ms
+iter 28: 15.219167 ms
+iter 29: 15.215167 ms
+iter 30: 14.910125 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/citationCiteseer/citationCiteseer.mtx"
+ Matrix size 268495 rows, 268495 cols
+ Data: 1156647 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.038483 sec 1156775 lines speed 3.00594e+07 lines/sec
+ Sorted in 0.108037 sec 2313294 lines
+ Reduced in 0.006242 sec 2313294 lines
+ Calc stats in 0.005701 sec
+ Loaded in 0.158465 sec, 2313294 edges total
+ deg: min 1, max 1318, avg 8.61578, sd 16.2825
+ distribution:
+  [     1 -      2):     14% **************
+  [     2 -      3):     13% ************
+  [     3 -      4):     11% **********
+  [     4 -      5):    9.1% *********
+  [     5 -      6):    7.5% *******
+  [     6 -      7):    6.5% ******
+  [     7 -      8):    5.4% *****
+  [     8 -      9):    4.5% ****
+  [     9 -     10):    3.8% ***
+  [    10 -     11):    3.2% ***
+  [    11 -     12):    2.7% **
+  [    12 -     13):    2.2% **
+  [    13 -     14):    1.9% *
+  [    14 -     15):    1.7% *
+  [    15 -     17):    2.7% **
+  [    17 -     25):    5.5% *****
+  [    25 -   1319):    5.6% *****
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 3057.69
+cpu(ms): 25.879, 24.483, 24.959, 26.876, 25.673, 26.082, 25.606, 26.304, 25.399, 25.416, 25.248, 25.519, 26.374, 26.71, 73.164, 26.618, 25.812, 24.783, 24.886, 24.676, 33.289, 34.866, 27.651, 24.892, 25.421, 25.215, 25.351, 25, 25.493, 24.907, 25.008, 
+gpu(ms): 56.544, 43.589, 43.857, 43.718, 43.877, 44.014, 45.915, 48.355, 52.089, 54.119, 54.781, 57.099, 60.098, 58.723, 60.169, 62.098, 66.934, 62.56, 57.702, 50.547, 53.145, 59.076, 62.634, 63.978, 61.912, 63.333, 65.466, 67.71, 72.782, 51.159, 44.828, 
+ref(ms): 19.917, 
+
+
+==============================
+Dataset: DIMACS10/vsp_msc10848_300sep_100in_1Kout
+==============================
+
+--- LAGraph ---
+iter 0: 1.870500 ms
+iter 1: 1.141625 ms
+iter 2: 1.123250 ms
+iter 3: 1.117416 ms
+iter 4: 1.110709 ms
+iter 5: 1.117458 ms
+iter 6: 1.124708 ms
+iter 7: 1.113583 ms
+iter 8: 1.151125 ms
+iter 9: 1.213791 ms
+iter 10: 1.131000 ms
+iter 11: 1.144125 ms
+iter 12: 1.132916 ms
+iter 13: 1.124667 ms
+iter 14: 1.128208 ms
+iter 15: 1.129625 ms
+iter 16: 1.123375 ms
+iter 17: 1.124708 ms
+iter 18: 1.122333 ms
+iter 19: 1.121167 ms
+iter 20: 1.119959 ms
+iter 21: 1.123333 ms
+iter 22: 1.126542 ms
+iter 23: 1.252083 ms
+iter 24: 1.187167 ms
+iter 25: 1.127959 ms
+iter 26: 1.121583 ms
+iter 27: 1.124458 ms
+iter 28: 1.117125 ms
+iter 29: 1.111417 ms
+iter 30: 1.107875 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/vsp_msc10848_300sep_100in_1Kout/vsp_msc10848_300sep_100in_1Kout.mtx"
+ Matrix size 21996 rows, 21996 cols
+ Data: 1221028 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.035876 sec 1221057 lines speed 3.40355e+07 lines/sec
+ Sorted in 0.108971 sec 2442056 lines
+ Reduced in 0.006695 sec 2442056 lines
+ Calc stats in 0.005475 sec
+ Loaded in 0.157018 sec, 2442056 edges total
+ deg: min 1, max 722, avg 111.023, sd 49.2986
+ distribution:
+  [    1 -    60):     13% *************
+  [   60 -    63):      0% 
+  [   63 -    81):    9.2% *********
+  [   81 -    87):    5.9% *****
+  [   87 -    96):     26% *************************
+  [   96 -    97):    1.9% *
+  [   97 -    98):      0% 
+  [   98 -    99):      0% 
+  [   99 -   126):    6.9% ******
+  [  126 -   133):      7% *******
+  [  133 -   144):      7% ******
+  [  144 -   153):    9.3% *********
+  [  153 -   180):    5.1% *****
+  [  180 -   723):    6.9% ******
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 987.206
+cpu(ms): 3.823, 3.119, 3.029, 3.316, 3.523, 3.066, 2.95, 2.911, 2.869, 3.485, 3.082, 2.946, 2.905, 2.868, 3.179, 3.046, 2.779, 2.702, 2.856, 2.774, 3.359, 3.112, 2.772, 2.862, 2.875, 3.12, 3.82, 3.494, 3.103, 3.015, 2.979, 
+gpu(ms): 28.172, 17.161, 17.242, 17.485, 17.566, 17.702, 17.56, 17.186, 17.488, 17.54, 18.059, 17.447, 17.996, 17.796, 17.587, 17.795, 17.579, 17.637, 17.959, 17.704, 17.677, 17.442, 17.39, 17.379, 17.67, 17.632, 17.402, 17.328, 17.587, 17.812, 19.853, 
+ref(ms): 3.521, 
+
+
+==============================
+Dataset: DIMACS10/belgium_osm
+==============================
+
+--- LAGraph ---
+iter 0: 114.176417 ms
+iter 1: 110.724875 ms
+iter 2: 111.921708 ms
+iter 3: 113.420583 ms
+iter 4: 113.829000 ms
+iter 5: 113.166458 ms
+iter 6: 113.422250 ms
+iter 7: 110.181458 ms
+iter 8: 112.069541 ms
+iter 9: 193.723042 ms
+iter 10: 112.939209 ms
+iter 11: 112.850875 ms
+iter 12: 114.780417 ms
+iter 13: 120.010750 ms
+iter 14: 115.984625 ms
+iter 15: 116.033625 ms
+iter 16: 113.693459 ms
+iter 17: 118.531500 ms
+iter 18: 111.952875 ms
+iter 19: 117.114417 ms
+iter 20: 111.763875 ms
+iter 21: 118.938625 ms
+iter 22: 118.551875 ms
+iter 23: 114.559291 ms
+iter 24: 114.293875 ms
+iter 25: 110.649500 ms
+iter 26: 113.804542 ms
+iter 27: 111.443916 ms
+iter 28: 111.230125 ms
+iter 29: 109.577375 ms
+iter 30: 116.213417 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/belgium_osm/belgium_osm.mtx"
+ Matrix size 1441295 rows, 1441295 cols
+ Data: 1549970 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.054051 sec 1550116 lines speed 2.86788e+07 lines/sec
+ Sorted in 0.09124 sec 3099940 lines
+ Reduced in 0.008049 sec 3099940 lines
+ Calc stats in 0.011591 sec
+ Loaded in 0.164933 sec, 3099940 edges total
+ deg: min 1, max 10, avg 2.1508, sd 0.492695
+ distribution:
+  [      1 -       3):     83% ***********************************************************************************
+  [      3 -       4):     15% **************
+  [      4 -       5):    1.9% *
+  [      5 -       6):      0% 
+  [      6 -       7):      0% 
+  [      7 -       8):      0% 
+  [      8 -       9):      0% 
+  [      9 -      10):      0% 
+  [     10 -      11):      0% 
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 91375.9
+cpu(ms): 150.015, 148.95, 148.731, 150.27, 152.512, 152.227, 153.635, 149.511, 159.088, 155.696, 152.405, 150.168, 150.518, 151.867, 150.073, 149.678, 148.681, 148.338, 148.219, 149.033, 150.907, 149.793, 149.186, 150.275, 159.542, 152.52, 150.153, 150.856, 156.435, 154.468, 150.747, 
+gpu(ms): 2777.64, 2642.31, 2524.83, 2563.42, 2524.84, 3771.8, 3521.14, 2630.24, 2655.14, 2663.24, 2594.86, 2497.79, 2519.19, 2600.71, 2668.84, 2487.43, 2615.39, 3208.95, 2586.9, 2602.4, 2464.95, 2392.86, 3342.05, 2463.79, 2421.96, 2777.06, 2546.42, 2613.69, 3340.73, 3969.47, 2811.84, 
+ref(ms): 34.353, 
+
+
+==============================
+Dataset: DIMACS10/m14b
+==============================
+
+--- LAGraph ---
+iter 0: 50.631000 ms
+iter 1: 32.019750 ms
+iter 2: 30.796666 ms
+iter 3: 31.026958 ms
+iter 4: 30.611500 ms
+iter 5: 31.292750 ms
+iter 6: 31.008000 ms
+iter 7: 31.290958 ms
+iter 8: 31.950125 ms
+iter 9: 31.675333 ms
+iter 10: 32.198125 ms
+iter 11: 31.714709 ms
+iter 12: 31.640208 ms
+iter 13: 31.068167 ms
+iter 14: 31.470417 ms
+iter 15: 31.327292 ms
+iter 16: 30.709250 ms
+iter 17: 31.926708 ms
+iter 18: 32.061708 ms
+iter 19: 31.676833 ms
+iter 20: 31.332291 ms
+iter 21: 31.343167 ms
+iter 22: 31.024417 ms
+iter 23: 31.038833 ms
+iter 24: 31.225500 ms
+iter 25: 32.819042 ms
+iter 26: 32.837792 ms
+iter 27: 31.032167 ms
+iter 28: 31.404292 ms
+iter 29: 30.869208 ms
+iter 30: 30.922541 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/m14b/m14b.mtx"
+ Matrix size 214765 rows, 214765 cols
+ Data: 1679018 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.054968 sec 1679185 lines speed 3.05484e+07 lines/sec
+ Sorted in 0.15105 sec 3358036 lines
+ Reduced in 0.00891 sec 3358036 lines
+ Calc stats in 0.007947 sec
+ Loaded in 0.222876 sec, 3358036 edges total
+ deg: min 4, max 40, avg 15.6359, sd 3.13119
+ distribution:
+  [     4 -     12):    8.8% ********
+  [    12 -     13):    6.8% ******
+  [    13 -     14):     10% **********
+  [    14 -     15):     11% ***********
+  [    15 -     16):     12% ************
+  [    16 -     17):     13% *************
+  [    17 -     18):     11% ***********
+  [    18 -     19):    8.6% ********
+  [    19 -     20):    7.1% *******
+  [    20 -     21):    4.6% ****
+  [    21 -     22):    2.4% **
+  [    22 -     23):    1.9% *
+  [    23 -     24):      0% 
+  [    24 -     25):      0% 
+  [    25 -     26):      0% 
+  [    26 -     27):      0% 
+  [    27 -     41):      0% 
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 6884.18
+cpu(ms): 66.929, 66.698, 66.631, 65.491, 69.288, 80.256, 72.91, 75.293, 101.742, 77.421, 87.07, 74.682, 125.764, 65.347, 65.208, 65.511, 68.342, 68.388, 67.846, 65.543, 64.871, 65.347, 66.833, 66.267, 66.352, 66.283, 65.753, 68.254, 66.21, 64.878, 65.723, 
+gpu(ms): 122.714, 110.786, 114.976, 115.197, 117.491, 135.369, 130.507, 134.579, 137.745, 145.453, 137.119, 132.716, 134.981, 133.299, 127.518, 116.367, 108.043, 115.302, 129.079, 137.643, 138.927, 142.201, 151.626, 166.323, 181.785, 176.148, 152.064, 117.27, 116.57, 117.661, 116.444, 
+ref(ms): 11.459, 
+
+
+==============================
+Dataset: DIMACS10/delaunay_n21
+==============================
+
+--- LAGraph ---
+iter 0: 247.821375 ms
+iter 1: 252.035167 ms
+iter 2: 271.081500 ms
+iter 3: 258.534792 ms
+iter 4: 246.889208 ms
+iter 5: 260.818708 ms
+iter 6: 242.084833 ms
+iter 7: 248.677041 ms
+iter 8: 242.876083 ms
+iter 9: 250.731208 ms
+iter 10: 244.862459 ms
+iter 11: 249.659000 ms
+iter 12: 243.288333 ms
+iter 13: 252.337792 ms
+iter 14: 255.454667 ms
+iter 15: 260.252458 ms
+iter 16: 254.249583 ms
+iter 17: 252.588500 ms
+iter 18: 252.637500 ms
+iter 19: 255.797917 ms
+iter 20: 257.908750 ms
+iter 21: 250.082791 ms
+iter 22: 355.602667 ms
+iter 23: 260.502667 ms
+iter 24: 253.557625 ms
+iter 25: 285.445750 ms
+iter 26: 255.760250 ms
+iter 27: 264.319542 ms
+iter 28: 258.439000 ms
+iter 29: 254.923334 ms
+iter 30: 254.299250 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/delaunay_n21/delaunay_n21.mtx"
+ Matrix size 2097152 rows, 2097152 cols
+ Data: 6291408 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.231954 sec 6291538 lines speed 2.71241e+07 lines/sec
+ Sorted in 0.416811 sec 12582816 lines
+ Reduced in 0.03288 sec 12582816 lines
+ Calc stats in 0.033573 sec
+ Loaded in 0.715219 sec, 12582816 edges total
+ deg: min 3, max 23, avg 5.99995, sd 1.33636
+ distribution:
+  [      3 -       5):     12% ***********
+  [      5 -       6):     26% *************************
+  [      6 -       7):     29% *****************************
+  [      7 -       8):     20% *******************
+  [      8 -       9):      9% ********
+  [      9 -      10):      3% **
+  [     10 -      11):      0% 
+  [     11 -      12):      0% 
+  [     12 -      13):      0% 
+  [     13 -      14):      0% 
+  [     14 -      15):      0% 
+  [     15 -      16):      0% 
+  [     16 -      17):      0% 
+  [     17 -      18):      0% 
+  [     18 -      19):      0% 
+  [     19 -      20):      0% 
+  [     20 -      21):      0% 
+  [     21 -      22):      0% 
+  [     22 -      23):      0% 
+  [     23 -      24):      0% 
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 65704.5
+cpu(ms): 298.97, 290.484, 289.485, 293.144, 288.632, 288.327, 294.389, 291.542, 285.715, 283.01, 283.785, 282.309, 289.142, 293.049, 376.974, 283.957, 282.523, 284.11, 284.223, 282.595, 302.472, 294.106, 299.737, 322.986, 286.928, 285.131, 286.262, 290.844, 289.234, 283.379, 289.758, 
+gpu(ms): 1891.98, 1554.23, 1746.28, 1720.23, 1694.21, 1791.14, 1879.2, 1877.63, 1698.89, 1731.12, 1816.06, 2058.9, 1936.75, 1600, 1926.11, 1719.61, 1554.47, 1690.49, 1613.15, 1510.92, 1805.72, 1822.76, 1602.93, 1826.05, 1608.98, 1626.78, 1835.2, 1701.06, 1875.23, 1600.7, 1732.86, 
+ref(ms): 65.947, 
+
+
+==============================
+Dataset: DIMACS10/kron_g500-logn17
+==============================
+
+--- LAGraph ---
+iter 0: 19.145708 ms
+iter 1: 4.947500 ms
+iter 2: 4.598417 ms
+iter 3: 4.415666 ms
+iter 4: 4.141708 ms
+iter 5: 3.976416 ms
+iter 6: 4.098459 ms
+iter 7: 4.188167 ms
+iter 8: 4.040208 ms
+iter 9: 3.936375 ms
+iter 10: 4.044042 ms
+iter 11: 4.256292 ms
+iter 12: 4.563041 ms
+iter 13: 4.336958 ms
+iter 14: 4.141208 ms
+iter 15: 4.226375 ms
+iter 16: 4.186458 ms
+iter 17: 4.383500 ms
+iter 18: 4.257000 ms
+iter 19: 4.228708 ms
+iter 20: 4.100166 ms
+iter 21: 4.553208 ms
+iter 22: 4.360875 ms
+iter 23: 4.192042 ms
+iter 24: 4.052416 ms
+iter 25: 4.009542 ms
+iter 26: 4.044542 ms
+iter 27: 4.065250 ms
+iter 28: 3.919959 ms
+iter 29: 3.966875 ms
+iter 30: 4.050500 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/kron_g500-logn17/kron_g500-logn17.mtx"
+ Matrix size 131072 rows, 131072 cols
+ Data: 5114375 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.176052 sec 5114637 lines speed 2.90519e+07 lines/sec
+ Sorted in 0.495913 sec 10227970 lines
+ Reduced in 0.028099 sec 10227970 lines
+ Calc stats in 0.023567 sec
+ Loaded in 0.723632 sec, 10227970 edges total
+ deg: min 0, max 29935, avg 78.0332, sd 378.073
+ distribution:
+  [     0 -      1):     18% *****************
+  [     1 -      2):     10% **********
+  [     2 -      3):    6.7% ******
+  [     3 -      4):    5.1% *****
+  [     4 -      5):    4.1% ****
+  [     5 -      6):    3.1% ***
+  [     6 -      7):    2.2% **
+  [     7 -      8):    1.8% *
+  [     8 -     12):    7.5% *******
+  [    12 -     15):    5.8% *****
+  [    15 -     26):    4.8% ****
+  [    26 -     38):    7.1% *******
+  [    38 -     45):    5.4% *****
+  [    45 -    115):    6.3% ******
+  [   115 -    332):    6.2% ******
+  [   332 -  29936):    6.2% ******
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 4233.63
+cpu(ms): 36.336, 35.962, 34.637, 34.511, 34.316, 36.326, 34.642, 34.108, 34.305, 33.97, 34.232, 34.728, 37.67, 33.799, 33.859, 33.708, 34.417, 34.44, 34.393, 34.711, 34.502, 33.995, 34.093, 33.732, 33.574, 34.143, 33.759, 33.992, 34.301, 33.8, 33.904, 
+gpu(ms): 104.59, 49.56, 48.798, 50.075, 50.579, 52.774, 52.012, 52.227, 53.689, 55.887, 56.657, 58.463, 55.528, 53.925, 55.123, 56.062, 53.984, 54.166, 55.26, 55.93, 55.875, 54.861, 54.806, 57.497, 54.262, 55.989, 56.201, 58.888, 57.243, 52.728, 51.228, 
+ref(ms): 14.67, 
+
+
+==============================
+Dataset: DIMACS10/adaptive
+==============================
+
+--- LAGraph ---
+iter 0: 494.417500 ms
+iter 1: 503.763458 ms
+iter 2: 498.045292 ms
+iter 3: 512.589292 ms
+iter 4: 679.049667 ms
+iter 5: 583.675875 ms
+iter 6: 530.544625 ms
+iter 7: 526.492583 ms
+iter 8: 541.422084 ms
+iter 9: 515.324084 ms
+iter 10: 510.245708 ms
+iter 11: 512.704833 ms
+iter 12: 531.217000 ms
+iter 13: 542.083916 ms
+iter 14: 531.280041 ms
+iter 15: 547.744583 ms
+iter 16: 526.823041 ms
+iter 17: 497.310250 ms
+iter 18: 529.526000 ms
+iter 19: 563.975333 ms
+iter 20: 594.908833 ms
+iter 21: 582.443334 ms
+iter 22: 556.949917 ms
+iter 23: 596.985792 ms
+iter 24: 514.743750 ms
+iter 25: 531.610167 ms
+iter 26: 545.800875 ms
+iter 27: 535.770334 ms
+iter 28: 562.925792 ms
+iter 29: 573.566875 ms
+iter 30: 568.067458 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/adaptive/adaptive.mtx"
+ Matrix size 6815744 rows, 6815744 cols
+ Data: 13624320 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.723177 sec 13624460 lines speed 1.88397e+07 lines/sec
+ Sorted in 0.977733 sec 27248640 lines
+ Reduced in 0.09764 sec 27248640 lines
+ Calc stats in 0.102414 sec
+ Loaded in 1.90097 sec, 27248640 edges total
+ deg: min 2, max 4, avg 3.9979, sd 0.045827
+ distribution:
+  [      2 -       5):  1e+02% ****************************************************************************************************
+  [      5 -       5):      0% 
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 535375
+cpu(ms): 824.418, 860.938, 771.847, 779.52, 740.883, 838.848, 751.801, 744.192, 746.995, 903.649, 748.204, 765.521, 752.994, 748.053, 751.355, 757.904, 776.492, 755.687, 746.044, 753.081, 750.163, 748.406, 821.248, 779.726, 747.86, 750.364, 750.578, 798.598, 769.921, 846.159, 766.284, 
+gpu(ms): 14019.3, 19055.6, 13657.6, 13663.3, 13827.2, 14756, 13711.6, 15392.8, 14632.4, 16503.1, 15500.2, 13427, 12399.3, 15168.8, 19946.2, 22069.7, 21949.2, 21759.7, 21528.6, 21627.5, 21584.3, 17352.5, 16796.1, 16839.3, 16371.4, 12654, 13549.1, 14217.9, 12282, 13761.3, 14430.6, 
+ref(ms): 116.052, 
+
+
+==============================
+Dataset: DIMACS10/coPapersCiteseer
+==============================
+
+--- LAGraph ---
+iter 0: 53.739709 ms
+iter 1: 28.565958 ms
+iter 2: 28.178583 ms
+iter 3: 28.198833 ms
+iter 4: 28.667125 ms
+iter 5: 29.118417 ms
+iter 6: 28.442709 ms
+iter 7: 28.893541 ms
+iter 8: 28.813375 ms
+iter 9: 31.990625 ms
+iter 10: 29.258208 ms
+iter 11: 28.618459 ms
+iter 12: 28.812834 ms
+iter 13: 30.668250 ms
+iter 14: 28.806958 ms
+iter 15: 28.690291 ms
+iter 16: 29.821417 ms
+iter 17: 31.050125 ms
+iter 18: 28.235334 ms
+iter 19: 28.270500 ms
+iter 20: 28.276833 ms
+iter 21: 30.076459 ms
+iter 22: 28.573125 ms
+iter 23: 28.512875 ms
+iter 24: 28.540792 ms
+iter 25: 34.074375 ms
+iter 26: 28.730166 ms
+iter 27: 28.829292 ms
+iter 28: 28.490958 ms
+iter 29: 28.616959 ms
+iter 30: 28.702250 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/coPapersCiteseer/coPapersCiteseer.mtx"
+ Matrix size 434102 rows, 434102 cols
+ Data: 16036720 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 0.521061 sec 16036848 lines speed 3.07773e+07 lines/sec
+ Sorted in 1.32856 sec 32073440 lines
+ Reduced in 0.095865 sec 32073440 lines
+ Calc stats in 0.079104 sec
+ Loaded in 2.02459 sec, 32073440 edges total
+ deg: min 1, max 1188, avg 73.8846, sd 101.278
+ distribution:
+  [     1 -      5):    6.7% ******
+  [     5 -      8):    5.6% *****
+  [     8 -     11):    5.2% *****
+  [    11 -     14):    4.7% ****
+  [    14 -     18):    5.7% *****
+  [    18 -     23):    6.3% ******
+  [    23 -     28):    5.5% *****
+  [    28 -     33):    4.9% ****
+  [    33 -     40):    5.8% *****
+  [    40 -     48):    5.6% *****
+  [    48 -     57):    5.1% *****
+  [    57 -     69):    5.6% *****
+  [    69 -     84):    5.5% *****
+  [    84 -    103):    5.7% *****
+  [   103 -    128):    5.6% *****
+  [   128 -    168):    5.5% *****
+  [   168 -    244):    5.5% *****
+  [   244 -   1189):    5.5% *****
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 9512.42
+cpu(ms): 207.616, 87.124, 84.026, 85.525, 87.762, 87.545, 91.363, 81.171, 85.761, 89.924, 91.417, 79.456, 82.442, 95.504, 95.744, 78.373, 91.796, 83.922, 94.067, 90.796, 78.04, 78.319, 93.519, 87.652, 90.375, 78.226, 79.405, 80.831, 93.354, 87.918, 79.601, 
+gpu(ms): 314.251, 66.645, 65.895, 63.901, 63.033, 62.268, 58.715, 61.323, 58.287, 61.738, 64.949, 61.768, 67.991, 65.361, 69.017, 73.559, 65.032, 63.186, 63.175, 65.642, 67.608, 69.368, 67.04, 76.131, 64.637, 68.434, 68.386, 65.293, 67.725, 104.546, 79.213, 
+ref(ms): 140.656, 
+
+
+==============================
+Dataset: SNAP/com-Orkut
+==============================
+
+--- LAGraph ---
+iter 0: 645.083083 ms
+iter 1: 156.120625 ms
+iter 2: 120.454334 ms
+iter 3: 262.893416 ms
+iter 4: 1136.195584 ms
+iter 5: 171.157541 ms
+iter 6: 100.006208 ms
+iter 7: 126.497708 ms
+iter 8: 267.430083 ms
+iter 9: 402.179750 ms
+iter 10: 143.626042 ms
+iter 11: 1287.297375 ms
+iter 12: 587.509000 ms
+iter 13: 761.781834 ms
+iter 14: 246.164792 ms
+iter 15: 170.167625 ms
+iter 16: 2128.896709 ms
+iter 17: 2095.540459 ms
+iter 18: 2053.162458 ms
+iter 19: 2978.117250 ms
+iter 20: 319.911000 ms
+iter 21: 105.579208 ms
+iter 22: 113.422792 ms
+iter 23: 543.021709 ms
+iter 24: 580.842625 ms
+iter 25: 509.857833 ms
+iter 26: 505.360709 ms
+iter 27: 453.760917 ms
+iter 28: 438.440709 ms
+iter 29: 533.703791 ms
+iter 30: 512.134750 ms
+
+
+--- Spla ---
+Loading matrix-market coordinate format data... 
+ Reading from "/Users/sofyakozyreva/graphs-theory/data/com-Orkut/com-Orkut.mtx"
+ Matrix size 3072441 rows, 3072441 cols
+ Data: 117185083 directed edges
+ Opt: remove self-loops
+ Opt: offset indices by -1
+ Opt: double edges
+ Reading data: ||||||||||||||||||||||||||||||||||| 100%
+ Parsed in 5.98763 sec 117185170 lines speed 1.95712e+07 lines/sec
+ Sorted in 29.1461 sec 234370166 lines
+ Reduced in 18.7416 sec 234370166 lines
+ Calc stats in 9.69852 sec
+ Loaded in 63.5739 sec, 234370166 edges total
+ deg: min 1, max 33313, avg 76.2814, sd 154.781
+ distribution:
+  [      1 -       4):    4.9% ****
+  [      4 -       8):    4.8% ****
+  [      8 -      12):    4.9% ****
+  [     12 -      16):    4.9% ****
+  [     16 -      20):    4.8% ****
+  [     20 -      24):    4.6% ****
+  [     24 -      28):    4.4% ****
+  [     28 -      33):    5.2% *****
+  [     33 -      38):    4.8% ****
+  [     38 -      43):    4.4% ****
+  [     43 -      49):    4.8% ****
+  [     49 -      56):      5% *****
+  [     56 -      63):    4.4% ****
+  [     63 -      72):    4.9% ****
+  [     72 -      82):    4.6% ****
+  [     82 -      95):    4.9% ****
+  [     95 -     111):    4.7% ****
+  [    111 -     133):    4.7% ****
+  [    133 -     167):    4.6% ****
+  [    167 -     241):    4.8% ****
+  [    241 -   33314):    4.8% ****
+env: OpenCL Acc Apple device: Apple M1 vendor: mcu:8 wave:8 mwgs:256
+CHECK cpu
+CHECK acc
+total(ms): 214597
+cpu(ms): 15194.1, 20270.7, 4502.61, 3231.58, 2003.66, 2461.14, 1970.03, 1965.14, 2586.04, 2447.88, 2065.94, 2829.76, 1872.58, 2596.52, 1977.34, 1835.3, 1653.47, 1795.22, 1720.15, 1655.22, 2016.85, 1676.79, 1550.76, 1471.27, 1717.43, 1739.62, 1516.86, 1463.45, 1559.6, 1513.3, 1604.43, 
+gpu(ms): 10642.9, 110.429, 110.525, 113.626, 114.799, 110.494, 107.967, 107.538, 121.694, 110.179, 102.213, 102.4, 107.944, 109.199, 111.466, 112.094, 109.014, 112.459, 110.982, 107.19, 119.276, 119.759, 111.311, 110.188, 111.309, 105.374, 118.045, 108.108, 113.311, 110.657, 114.288, 
+ref(ms): 5417.04, 
+
