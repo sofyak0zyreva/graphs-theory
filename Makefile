@@ -15,9 +15,12 @@ LAGRAPH_PR_BIN = build/lagraph_pr
 LAGRAPH_SSSP_SRC = scripts/lagraph/lagraph_sssp.c
 LAGRAPH_SSSP_BIN = build/lagraph_sssp
 
-.PHONY: all clean lagraph_bfs lagraph_pr lagraph_sssp
+LAGRAPH_TC_SRC = scripts/lagraph/lagraph_tc.c
+LAGRAPH_TC_BIN = build/lagraph_tc
 
-all: lagraph_bfs lagraph_pr lagraph_sssp
+.PHONY: all clean lagraph_bfs lagraph_pr lagraph_sssp lagraph_tc
+
+all: lagraph_bfs lagraph_pr lagraph_sssp lagraph_tc
 
 lagraph_bfs: $(LAGRAPH_BFS_BIN)
 
@@ -34,6 +37,12 @@ $(LAGRAPH_PR_BIN): $(LAGRAPH_PR_SRC)
 lagraph_sssp: $(LAGRAPH_SSSP_BIN)
 
 $(LAGRAPH_SSSP_BIN): $(LAGRAPH_SSSP_SRC)
+	mkdir -p build
+	$(CC) $< $(LAGRAPH_UTILS) -o $@ $(CFLAGS) $(LDFLAGS)
+
+lagraph_tc: $(LAGRAPH_TC_BIN)
+
+$(LAGRAPH_TC_BIN): $(LAGRAPH_TC_SRC)
 	mkdir -p build
 	$(CC) $< $(LAGRAPH_UTILS) -o $@ $(CFLAGS) $(LDFLAGS)
 

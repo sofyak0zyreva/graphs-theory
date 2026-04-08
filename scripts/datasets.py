@@ -38,7 +38,7 @@ PAGERANK_DATASETS = [
     ("SNAP", "soc-LiveJournal1"),
 ]
 
-# unweighted undirected graphs with 25k 28.5M edges
+# unweighted undirected graphs with 25k - 28.5M edges
 TC_DATASETS = [
     ("DIMACS10", "delaunay_n13"),
     ("Gleich", "usroads"),
