@@ -4,7 +4,6 @@ from scripts.benchmark.vars import *
 
 SOURCE = 0
 
-
 def run_lagraph(mtx_path):
     cmd = [
         LAGRAPH_SSSP_BIN,
