@@ -1,27 +1,29 @@
 # graphs are sorted by number of edges (ascending)
 
-# unweighted directed and undirected graphs with 25k - 68.9M edges
+# unweighted undirected graphs with 1 strongly connected component,
+# pairs of approximately the same number of edges, one with degree < 10 (first) and the other with > 15 (second)
+# sorted by number of edges (ascending), range is ~1.1M-16M
 BFS_DATASETS = [
-    ("DIMACS10", "delaunay_n13"),
-    ("SNAP", "email-Enron"),
-    ("SNAP", "soc-Epinions1"),
-    ("SNAP", "soc-Slashdot0811"),
-    ("SNAP", "roadNet-CA"),
-    ("SNAP", "as-Skitter"),
-    ("SNAP", "soc-Pokec"),
-    ("SNAP", "soc-LiveJournal1")
+    ("DIMACS10", "citationCiteseer"),
+    ("DIMACS10", "vsp_msc10848_300sep_100in_1Kout"),
+    ("DIMACS10", "belgium_osm"),
+    ("DIMACS10", "m14b"),
+    ("DIMACS10", "delaunay_n21"),
+    ("DIMACS10", "kron_g500-logn17"),
+    ("DIMACS10", "adaptive"),
+    ("DIMACS10", "coPapersCiteseer"),
+    ("SNAP", "com-Orkut"),  # a 117M edges and high avg vertex degree (76)
 ]
 
-# weighted directed and undirected graphs with 34k - 27M edges
+# weighted directed and undirected graphs with 1 strongly connected component,
+# pairs of approximately the same number of edges, one with degree < 10 (first) and the other with > 15 (second)
+# sorted by number of edges (ascending), range is ~2M-108M
 SSSP_DATASETS = [
-    ("SNAP", "soc-sign-bitcoin-otc"),
-    ("SNAP", "wiki-RfA"),
-    ("SNAP", "soc-sign-Slashdot090221"),
-    ("SNAP", "soc-sign-epinions"),
-    ("vanHeukelum", "cage12"),
-    ("vanHeukelum", "cage13"),
-    ("Belcastro", "mouse_gene"),
+    ("DIMACS10", "pa2010"),
+    ("Williams", "pdb1HYS"),
+    ("GAP", "GAP-road"),
     ("vanHeukelum", "cage14"),
+    ("vanHeukelum", "cage15")  # a 100M edges and high avg vertex degree (19)
 ]
 
 # unweighted directed graphs with 20k - 68.9M edges
@@ -46,6 +48,7 @@ TC_DATASETS = [
     ("SNAP", "as-Skitter"),
     ("DIMACS10", "road_usa"),
 ]
+
 
 def collect_all_datasets():
     all_sets = (
