@@ -11,25 +11,26 @@ GALOIS_TC = GALOIS_BIN + "triangle-counting/triangle-counting-dist"
 
 OUTPUT_TC = OUTPUT_CSV / "tc_results.csv"
 
+
 def run(graph, nproc):
     galois_bin = str(GALOIS_TC)
 
     cmd = [
         "mpirun",
-        "-n", str(nproc),
+        "-n",
+        str(nproc),
         galois_bin,
         str(graph),
         "-graphTranspose=" + str(graph).replace(".gr", ".tgr"),
-        "-t="+str(THREADS),
-        "-runs="+str(RUNS),
-        "--symmetricGraph"
+        "-t=" + str(THREADS),
+        "-runs=" + str(RUNS),
+        "--symmetricGraph",
     ]
     # print(cmd)
     print("RUN:", " ".join(cmd))
     galois_root = str(GALOIS_ROOT)
 
-    p = subprocess.run(cmd, cwd=galois_root,
-                       capture_output=True, text=True)
+    p = subprocess.run(cmd, cwd=galois_root, capture_output=True, text=True)
 
     out = p.stdout + p.stderr
     print(out)
@@ -66,18 +67,29 @@ def run(graph, nproc):
         CSREdgeSort = "-"
     print(CSREdgeSort)
     EdgeInspectionBytesSent = re.findall(
-        r"EdgeInspectionBytesSent,[^,]+,\s*([\d.]+)", out)
+        r"EdgeInspectionBytesSent,[^,]+,\s*([\d.]+)", out
+    )
     if not EdgeInspectionBytesSent:
         EdgeInspectionBytesSent = "-"
     print(EdgeInspectionBytesSent)
     distr = re.findall(
-        r"Master distribution time\s*:\s*([-+]?[\d.]+(?:e[-+]?\d+)?)", out)
+        r"Master distribution time\s*:\s*([-+]?[\d.]+(?:e[-+]?\d+)?)", out
+    )
     if not distr:
         distr = [0]
-    numbers = [round(float(x)*1000, 2) for x in distr]
+    numbers = [round(float(x) * 1000, 2) for x in distr]
     distr_final = np.mean(numbers)
 
-    return mean_rounded, err_rounded, repl_nodes[0], repl_edges[0], constr[0], CSREdgeSort[0], EdgeInspectionBytesSent[0], distr_final
+    return (
+        mean_rounded,
+        err_rounded,
+        repl_nodes[0],
+        repl_edges[0],
+        constr[0],
+        CSREdgeSort[0],
+        EdgeInspectionBytesSent[0],
+        distr_final,
+    )
 
 
 def main():
@@ -86,29 +98,52 @@ def main():
         g = build_path(name)
         for n in NS:
             try:
-                mean, std, repl_nodes, repl_edges, constr, CSREdgeSort, EdgeInspectionBytesSent, distr = run(
-                    g, n)
+                (
+                    mean,
+                    std,
+                    repl_nodes,
+                    repl_edges,
+                    constr,
+                    CSREdgeSort,
+                    EdgeInspectionBytesSent,
+                    distr,
+                ) = run(g, n)
                 if mean is None or std is None:
                     continue
-                rows.append({
-                    "graph": name,
-                    "nodes": n,
-                    "mean": mean,
-                    "stderr": std,
-                    "repl nodes": repl_nodes,
-                    "repl edges": repl_edges, 
-                    "constr": constr, 
-                    "CSREdgeSort": CSREdgeSort,
-                    "EdgeInspectionBytesSent": EdgeInspectionBytesSent,
-                    "distr": distr
-                })
+                rows.append(
+                    {
+                        "graph": name,
+                        "nodes": n,
+                        "mean": mean,
+                        "stderr": std,
+                        "repl nodes": repl_nodes,
+                        "repl edges": repl_edges,
+                        "constr": constr,
+                        "CSREdgeSort": CSREdgeSort,
+                        "EdgeInspectionBytesSent": EdgeInspectionBytesSent,
+                        "distr": distr,
+                    }
+                )
 
             except Exception as e:
                 print("ERROR:", g, n, e)
 
     with open(OUTPUT_TC, "w", newline="") as f:
         writer = csv.DictWriter(
-            f, fieldnames=["graph", "nodes", "mean", "stderr", "repl nodes", "repl edges", "constr", "CSREdgeSort", "EdgeInspectionBytesSent", "distr"])
+            f,
+            fieldnames=[
+                "graph",
+                "nodes",
+                "mean",
+                "stderr",
+                "repl nodes",
+                "repl edges",
+                "constr",
+                "CSREdgeSort",
+                "EdgeInspectionBytesSent",
+                "distr",
+            ],
+        )
         writer.writeheader()
         writer.writerows(rows)
 

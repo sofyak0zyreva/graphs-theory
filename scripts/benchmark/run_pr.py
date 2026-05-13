@@ -1,34 +1,32 @@
 import subprocess
 import re
 import csv
-import numpy as np
-from pathlib import Path
 from scripts.vars import *
 from scripts.datasets import PAGERANK_DATASETS
 from scripts.benchmark.helpers import *
 
-GALOIS_PR = GALOIS_BIN + "pagerank/pagerank-push-dist"
+GALOIS_PR = GALOIS_BIN + "pagerank/pagerank-pull-dist"
 
-OUTPUT_PR = OUTPUT_CSV / "pr_results.csv"
+OUTPUT_PR = OUTPUT_CSV / "pr_pull_results.csv"
 
 
 def run(graph, nproc):
     galois_bin = str(GALOIS_PR)
     cmd = [
         "mpirun",
-        "-n", str(nproc),
+        "-n",
+        str(nproc),
         galois_bin,
         str(graph),
         "-graphTranspose=" + str(graph).replace(".gr", ".tgr"),
-        "-t="+str(THREADS),
-        "-runs="+str(RUNS),
+        "-t=" + str(THREADS),
+        "-runs=" + str(RUNS),
     ]
     # print(cmd)
     print("RUN:", " ".join(cmd))
     galois_root = str(GALOIS_ROOT)
 
-    p = subprocess.run(cmd, cwd=galois_root,
-                       capture_output=True, text=True)
+    p = subprocess.run(cmd, cwd=galois_root, capture_output=True, text=True)
 
     out = p.stdout + p.stderr
     print(out)
@@ -57,7 +55,8 @@ def run(graph, nproc):
         constr = "-"
     print(constr)
     reduce_send_bytes = re.findall(
-        r"ReduceSendBytes_PageRank_\d,[^,]+,\s*([\d.]+)", out)
+        r"ReduceSendBytes_PageRank_\d,[^,]+,\s*([\d.]+)", out
+    )
     if not reduce_send_bytes:
         reduce_send_bytes = [0]
     reduce_send_bytes_final = np.mean(list(map(float, reduce_send_bytes)))
@@ -66,12 +65,13 @@ def run(graph, nproc):
     if not sync:
         sync = [0]
     distr = re.findall(
-        r"Master distribution time\s*:\s*([-+]?[\d.]+(?:e[-+]?\d+)?)", out)
+        r"Master distribution time\s*:\s*([-+]?[\d.]+(?:e[-+]?\d+)?)", out
+    )
     if not distr:
         distr = [0]
     # print(reduce_send_bytes)
     # print(sync)
-    numbers = [round(float(x)*1000, 2) for x in distr]
+    numbers = [round(float(x) * 1000, 2) for x in distr]
     # print(numbers)
     distr_final = np.mean(numbers)
     mirr = re.findall(r"RESET:MIRRORS_\d,[^,]+,[^,]+,\s*([\d.]+)", out)
@@ -79,7 +79,16 @@ def run(graph, nproc):
         mirr = [0]
     mirr_final = np.mean(list(map(float, mirr)))
 
-    return mean_rounded, err_rounded, repl[0], reduce_send_bytes_final, sync_final, distr_final, constr[0], mirr_final
+    return (
+        mean_rounded,
+        err_rounded,
+        repl[0],
+        reduce_send_bytes_final,
+        sync_final,
+        distr_final,
+        constr[0],
+        mirr_final,
+    )
 
 
 def main():
@@ -90,31 +99,53 @@ def main():
         g = build_path(name)
         for n in NS:
             try:
-                mean, std, repl, reduce_send_bytes, sync, distr, constr, reset_mirror = run(
-                    g, n)
+                (
+                    mean,
+                    std,
+                    repl,
+                    reduce_send_bytes,
+                    sync,
+                    distr,
+                    constr,
+                    reset_mirror,
+                ) = run(g, n)
                 if mean is None or std is None:
                     continue
                 # print(t)
-                rows.append({
-                    "graph": name,
-                    "nodes": n,
-                    "mean": mean,
-                    "stderr": std,
-                    "replication factor": repl,
-                    "reduce send bytes": reduce_send_bytes,
-                    "sync": sync,
-                    "distr": distr,
-                    "constr": constr,
-                    "reset mirror": reset_mirror
-
-                })
+                rows.append(
+                    {
+                        "graph": name,
+                        "nodes": n,
+                        "mean": mean,
+                        "stderr": std,
+                        "replication factor": repl,
+                        "reduce send bytes": reduce_send_bytes,
+                        "sync": sync,
+                        "distr": distr,
+                        "constr": constr,
+                        "reset mirror": reset_mirror,
+                    }
+                )
 
             except Exception as e:
                 print("ERROR:", g, n, e)
 
     with open(OUTPUT_PR, "w", newline="") as f:
         writer = csv.DictWriter(
-            f, fieldnames=["graph", "nodes", "mean", "stderr", "replication factor", "reduce send bytes", "sync", "distr", "constr", "reset mirror"])
+            f,
+            fieldnames=[
+                "graph",
+                "nodes",
+                "mean",
+                "stderr",
+                "replication factor",
+                "reduce send bytes",
+                "sync",
+                "distr",
+                "constr",
+                "reset mirror",
+            ],
+        )
         writer.writeheader()
         writer.writerows(rows)
 

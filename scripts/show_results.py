@@ -1,7 +1,7 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
+import pandas as pd  # type: ignore
+import matplotlib.pyplot as plt  # type: ignore
+import seaborn as sns  # type: ignore
+import numpy as np  # type: ignore
 from scripts.vars import *
 
 
@@ -11,29 +11,21 @@ def show(path, output_path, name):
     sns.set_theme(style="whitegrid")
     plt.figure(figsize=(14, 8))
 
-    df['nodes'] = df['nodes'].astype(str)
+    df["nodes"] = df["nodes"].astype(str)
 
-    ax = sns.barplot(
-        data=df,
-        x='graph',
-        y='mean',
-        hue='nodes',
-        palette='viridis'
-    )
+    ax = sns.barplot(data=df, x="graph", y="mean", hue="nodes", palette="viridis")
 
     ax.set_yscale("log")
 
     for container in ax.containers:
-        labels = [f'{val:.2f}' if val >
-                  0 else '' for val in container.datavalues]
-        ax.bar_label(container, labels=labels,
-                     padding=3, fontsize=9, rotation=45)
+        labels = [f"{val:.2f}" if val > 0 else "" for val in container.datavalues]
+        ax.bar_label(container, labels=labels, padding=3, fontsize=9, rotation=45)
 
     plt.title(name, fontsize=16)
-    plt.xlabel('Graph Name', fontsize=12)
-    plt.ylabel('Mean Time (log scale)', fontsize=12)
-    plt.xticks(rotation=15, ha='right')
-    plt.legend(title='Nodes', loc='upper left')
+    plt.xlabel("Graph Name", fontsize=12)
+    plt.ylabel("Mean Time (log scale)", fontsize=12)
+    plt.xticks(rotation=15, ha="right")
+    plt.legend(title="Nodes", loc="upper left")
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches="tight")

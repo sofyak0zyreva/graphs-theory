@@ -1,6 +1,7 @@
 import numpy as np  # type: ignore
 from scripts.vars import *
 
+
 def significant_round(x, sig=1):
     """Round to significant digits"""
     if x == 0:
@@ -28,4 +29,3 @@ def match_decimal_places(mean, err):
         decimals = 0
 
     return round(mean, decimals)
-
