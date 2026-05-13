@@ -1,8 +1,6 @@
 import subprocess
 import re
 import csv
-import numpy as np
-from pathlib import Path
 from scripts.vars import *
 from scripts.datasets import TC_DATASETS
 from scripts.benchmark.helpers import *
