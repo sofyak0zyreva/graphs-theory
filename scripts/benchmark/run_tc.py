@@ -80,10 +80,6 @@ def run(graph, nproc):
     return mean_rounded, err_rounded, repl_nodes[0], repl_edges[0], constr[0], CSREdgeSort[0], EdgeInspectionBytesSent[0], distr_final
 
 
-def build_path(name):
-    return os.path.join("/Users/sofyakozyreva/graphs-theory/data/gr/", f"{name}.gr")
-
-
 def main():
     rows = []
     for _, name in TC_DATASETS:

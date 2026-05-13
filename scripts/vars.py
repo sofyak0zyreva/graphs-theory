@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-print(ROOT)
 
 DATA_DIR = Path("data")
 
@@ -19,4 +18,7 @@ REPO_ROOT = ROOT / "graphs-theory"
 OUTPUT_CSV = REPO_ROOT / "scripts/benchmark/results/"
 GALOIS_BIN = "./build/lonestar/analytics/distributed/"
 GALOIS_ROOT = ROOT / "Galois"
-print(OUTPUT_CSV)
+
+
+def build_path(name):
+    return os.path.join(REPO_ROOT / "data/gr", f"{name}.gr")

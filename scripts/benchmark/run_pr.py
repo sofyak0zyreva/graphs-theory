@@ -82,10 +82,6 @@ def run(graph, nproc):
     return mean_rounded, err_rounded, repl[0], reduce_send_bytes_final, sync_final, distr_final, constr[0], mirr_final
 
 
-def build_path(name):
-    return os.path.join("/Users/sofyakozyreva/graphs-theory/data/gr/", f"{name}.gr")
-
-
 def main():
     # graphs = sorted(OUT_DIR.glob("*.gr"))
     rows = []
