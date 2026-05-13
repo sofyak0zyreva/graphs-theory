@@ -4,16 +4,16 @@ import csv
 import numpy as np
 from pathlib import Path
 from scripts.vars import *
-from scripts.datasets import BFS_DATASETS
+from scripts.datasets import PAGERANK_DATASETS
 from scripts.benchmark.helpers import *
 
-GALOIS_BFS = GALOIS_BIN + "bfs/bfs-push-dist"
+GALOIS_PR = GALOIS_BIN + "pagerank/pagerank-push-dist"
 
-OUTPUT_BFS = OUTPUT_CSV / "bfs_results.csv"
-# OUTPUT_CSV.parent.mkdir(exist_ok=True)
+OUTPUT_PR = OUTPUT_CSV / "pr_results.csv"
+
 
 def run(graph, nproc):
-    galois_bin = str(GALOIS_BFS)
+    galois_bin = str(GALOIS_PR)
     cmd = [
         "mpirun",
         "-n", str(nproc),
@@ -22,7 +22,6 @@ def run(graph, nproc):
         "-graphTranspose=" + str(graph).replace(".gr", ".tgr"),
         "-t="+str(THREADS),
         "-runs="+str(RUNS),
-        "-startNode="+str(1000)
     ]
     # print(cmd)
     print("RUN:", " ".join(cmd))
@@ -58,10 +57,12 @@ def run(graph, nproc):
         constr = "-"
     print(constr)
     reduce_send_bytes = re.findall(
-        r"ReduceSendBytes_BFS_\d,[^,]+,\s*([\d.]+)", out)
+        r"ReduceSendBytes_PageRank_\d,[^,]+,\s*([\d.]+)", out)
     if not reduce_send_bytes:
         reduce_send_bytes = [0]
-    sync = re.findall(r"Sync_BFS_\d,[^,]+,\s*([\d.]+)", out)
+    reduce_send_bytes_final = np.mean(list(map(float, reduce_send_bytes)))
+    sync = re.findall(r"Sync_PageRank_\d,[^,]+,\s*([\d.]+)", out)
+    sync_final = np.mean(list(map(float, sync)))
     if not sync:
         sync = [0]
     distr = re.findall(
@@ -70,13 +71,15 @@ def run(graph, nproc):
         distr = [0]
     # print(reduce_send_bytes)
     # print(sync)
-    reduce_send_bytes_final = np.mean(list(map(float, reduce_send_bytes)))
-    sync_final = np.mean(list(map(float, sync)))
     numbers = [round(float(x)*1000, 2) for x in distr]
     # print(numbers)
     distr_final = np.mean(numbers)
-    
-    return mean_rounded, err_rounded, repl[0], reduce_send_bytes_final, sync_final, distr_final, constr[0]
+    mirr = re.findall(r"RESET:MIRRORS_\d,[^,]+,[^,]+,\s*([\d.]+)", out)
+    if not mirr:
+        mirr = [0]
+    mirr_final = np.mean(list(map(float, mirr)))
+
+    return mean_rounded, err_rounded, repl[0], reduce_send_bytes_final, sync_final, distr_final, constr[0], mirr_final
 
 
 def build_path(name):
@@ -87,11 +90,11 @@ def main():
     # graphs = sorted(OUT_DIR.glob("*.gr"))
     rows = []
     # for g in graphs:
-    for _, name in BFS_DATASETS:
+    for _, name in PAGERANK_DATASETS:
         g = build_path(name)
         for n in NS:
             try:
-                mean, std, repl, reduce_send_bytes, sync, distr, constr = run(
+                mean, std, repl, reduce_send_bytes, sync, distr, constr, reset_mirror = run(
                     g, n)
                 if mean is None or std is None:
                     continue
@@ -104,21 +107,22 @@ def main():
                     "replication factor": repl,
                     "reduce send bytes": reduce_send_bytes,
                     "sync": sync,
-                    "distr": distr, 
-                    "constr": constr
-                    
+                    "distr": distr,
+                    "constr": constr,
+                    "reset mirror": reset_mirror
+
                 })
 
             except Exception as e:
                 print("ERROR:", g, n, e)
 
-    with open(OUTPUT_BFS, "w", newline="") as f:
+    with open(OUTPUT_PR, "w", newline="") as f:
         writer = csv.DictWriter(
-            f, fieldnames=["graph", "nodes", "mean", "stderr", "replication factor", "reduce send bytes", "sync", "distr", "constr"])
+            f, fieldnames=["graph", "nodes", "mean", "stderr", "replication factor", "reduce send bytes", "sync", "distr", "constr", "reset mirror"])
         writer.writeheader()
         writer.writerows(rows)
 
-    print("Saved to", OUTPUT_BFS)
+    print("Saved to", OUTPUT_PR)
 
 
 if __name__ == "__main__":

@@ -4,16 +4,16 @@ import csv
 import numpy as np
 from pathlib import Path
 from scripts.vars import *
-from scripts.datasets import BFS_DATASETS
+from scripts.datasets import TC_DATASETS
 from scripts.benchmark.helpers import *
 
-GALOIS_BFS = GALOIS_BIN + "bfs/bfs-push-dist"
+GALOIS_TC = GALOIS_BIN + "triangle-counting/triangle-counting-dist"
 
-OUTPUT_BFS = OUTPUT_CSV / "bfs_results.csv"
-# OUTPUT_CSV.parent.mkdir(exist_ok=True)
+OUTPUT_TC = OUTPUT_CSV / "tc_results.csv"
 
 def run(graph, nproc):
-    galois_bin = str(GALOIS_BFS)
+    galois_bin = str(GALOIS_TC)
+
     cmd = [
         "mpirun",
         "-n", str(nproc),
@@ -22,7 +22,7 @@ def run(graph, nproc):
         "-graphTranspose=" + str(graph).replace(".gr", ".tgr"),
         "-t="+str(THREADS),
         "-runs="+str(RUNS),
-        "-startNode="+str(1000)
+        "--symmetricGraph"
     ]
     # print(cmd)
     print("RUN:", " ".join(cmd))
@@ -49,34 +49,35 @@ def run(graph, nproc):
     std = np.std(result, ddof=1)
     err_rounded = round_error(std)
     mean_rounded = match_decimal_places(mean, err_rounded)
-    repl = re.findall(r"ReplicationFactor,[^,]+,\s*([\d.]+)", out)
-    if not repl:
-        repl = "-"
-    # print(repl)
+    repl_nodes = re.findall(r"ReplicationFactorNodes,[^,]+,\s*([\d.]+)", out)
+    if not repl_nodes:
+        repl_nodes = "-"
+    print(repl_nodes)
+    repl_edges = re.findall(r"ReplicatonFactorEdges,[^,]+,\s*([\d.]+)", out)
+    if not repl_edges:
+        repl_edges = "-"
+    print(repl_edges)
     constr = re.findall(r"GraphConstructTime,[^,]+,\s*([\d.]+)", out)
     if not constr:
         constr = "-"
     print(constr)
-    reduce_send_bytes = re.findall(
-        r"ReduceSendBytes_BFS_\d,[^,]+,\s*([\d.]+)", out)
-    if not reduce_send_bytes:
-        reduce_send_bytes = [0]
-    sync = re.findall(r"Sync_BFS_\d,[^,]+,\s*([\d.]+)", out)
-    if not sync:
-        sync = [0]
+    CSREdgeSort = re.findall(r"CSREdgeSort,[^,]+,[^,]+,\s*([\d.]+)", out)
+    if not CSREdgeSort:
+        CSREdgeSort = "-"
+    print(CSREdgeSort)
+    EdgeInspectionBytesSent = re.findall(
+        r"EdgeInspectionBytesSent,[^,]+,\s*([\d.]+)", out)
+    if not EdgeInspectionBytesSent:
+        EdgeInspectionBytesSent = "-"
+    print(EdgeInspectionBytesSent)
     distr = re.findall(
         r"Master distribution time\s*:\s*([-+]?[\d.]+(?:e[-+]?\d+)?)", out)
     if not distr:
         distr = [0]
-    # print(reduce_send_bytes)
-    # print(sync)
-    reduce_send_bytes_final = np.mean(list(map(float, reduce_send_bytes)))
-    sync_final = np.mean(list(map(float, sync)))
     numbers = [round(float(x)*1000, 2) for x in distr]
-    # print(numbers)
     distr_final = np.mean(numbers)
-    
-    return mean_rounded, err_rounded, repl[0], reduce_send_bytes_final, sync_final, distr_final, constr[0]
+
+    return mean_rounded, err_rounded, repl_nodes[0], repl_edges[0], constr[0], CSREdgeSort[0], EdgeInspectionBytesSent[0], distr_final
 
 
 def build_path(name):
@@ -84,41 +85,38 @@ def build_path(name):
 
 
 def main():
-    # graphs = sorted(OUT_DIR.glob("*.gr"))
     rows = []
-    # for g in graphs:
-    for _, name in BFS_DATASETS:
+    for _, name in TC_DATASETS:
         g = build_path(name)
         for n in NS:
             try:
-                mean, std, repl, reduce_send_bytes, sync, distr, constr = run(
+                mean, std, repl_nodes, repl_edges, constr, CSREdgeSort, EdgeInspectionBytesSent, distr = run(
                     g, n)
                 if mean is None or std is None:
                     continue
-                # print(t)
                 rows.append({
                     "graph": name,
                     "nodes": n,
                     "mean": mean,
                     "stderr": std,
-                    "replication factor": repl,
-                    "reduce send bytes": reduce_send_bytes,
-                    "sync": sync,
-                    "distr": distr, 
-                    "constr": constr
-                    
+                    "repl nodes": repl_nodes,
+                    "repl edges": repl_edges, 
+                    "constr": constr, 
+                    "CSREdgeSort": CSREdgeSort,
+                    "EdgeInspectionBytesSent": EdgeInspectionBytesSent,
+                    "distr": distr
                 })
 
             except Exception as e:
                 print("ERROR:", g, n, e)
 
-    with open(OUTPUT_BFS, "w", newline="") as f:
+    with open(OUTPUT_TC, "w", newline="") as f:
         writer = csv.DictWriter(
-            f, fieldnames=["graph", "nodes", "mean", "stderr", "replication factor", "reduce send bytes", "sync", "distr", "constr"])
+            f, fieldnames=["graph", "nodes", "mean", "stderr", "repl nodes", "repl edges", "constr", "CSREdgeSort", "EdgeInspectionBytesSent", "distr"])
         writer.writeheader()
         writer.writerows(rows)
 
-    print("Saved to", OUTPUT_BFS)
+    print("Saved to", OUTPUT_TC)
 
 
 if __name__ == "__main__":
