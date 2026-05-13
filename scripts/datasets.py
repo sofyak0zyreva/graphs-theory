@@ -28,7 +28,6 @@ SSSP_DATASETS = [
 # unweighted directed graphs with 20k - 68.9M edges
 PAGERANK_DATASETS = [
     ("SNAP", "p2p-Gnutella08"),
-    ("SNAP", "p2p-Gnutella31"),
     ("SNAP", "soc-Epinions1"),
     ("SNAP", "soc-Slashdot0811"),
     ("SNAP", "amazon0302"),

@@ -29,7 +29,6 @@ def show(path, output_path, name):
         ax.bar_label(container, labels=labels,
                      padding=3, fontsize=9, rotation=45)
 
-    # plt.title('BFS Performance by Graph and Node Count', fontsize=16)
     plt.title(name, fontsize=16)
     plt.xlabel('Graph Name', fontsize=12)
     plt.ylabel('Mean Time (log scale)', fontsize=12)
@@ -38,7 +37,7 @@ def show(path, output_path, name):
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches="tight")
-    plt.show()
+    # plt.show()
 
 
 if __name__ == "__main__":
@@ -46,3 +45,4 @@ if __name__ == "__main__":
     show(path / "bfs_results.csv", path / "bfs.png", "BFS")
     show(path / "tc_results.csv", path / "tc.png", "TC")
     show(path / "pr_results.csv", path / "pr.png", "PR")
+    show(path / "sssp_results.csv", path / "sssp.png", "SSSP")
